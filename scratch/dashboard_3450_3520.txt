@@ -1,0 +1,70 @@
+3451:                       </span>
+3452:                     </div>
+3453: 
+3454:                     {phase === 'First DAC' && (() => {
+3455:                       const isCompleted = s.progress >= 10
+3456:                       return (
+3457:                         <div className="space-y-4 text-xs text-slate-700">
+3458:                           <div className={`p-4 rounded-xl border ${isCompleted ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'}`}>
+3459:                             <div className="flex items-center gap-2">
+3460:                               {isCompleted ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Clock className="w-4 h-4 text-amber-600" />}
+3461:                               <p className="font-extrabold uppercase tracking-wide">First DAC Meeting Status</p>
+3462:                             </div>
+3463:                             <p className="mt-2 font-medium text-[11px]">
+3464:                               {isCompleted 
+3465:                                 ? `Completed on ${s.name === 'Aishwarya S' ? '25 Jun 2026' : '12 Jun 2026'}. Venue: Research Cell Conference Room.` 
+3466:                                 : 'Scheduled/Awaiting scheduling.'}
+3467:                             </p>
+3468:                           </div>
+3469:                           <div className="border border-slate-200 rounded-xl p-4 space-y-3 bg-slate-50/50">
+3470:                             <p className="font-bold text-slate-800 uppercase text-[9px] tracking-wider border-b pb-1">DAC Committee Constitution</p>
+3471:                             
+3472:                             <div className="space-y-0.5 text-[11px]">
+3473:                               <p className="font-extrabold text-slate-900">Convener:</p>
+3474:                               <p className="pl-3 font-semibold text-slate-700">Dr. D. Srinivasan (Supervisor)</p>
+3475:                             </div>
+3476:                             
+3477:                             <div className="space-y-0.5 text-[11px]">
+3478:                               <p className="font-extrabold text-slate-900">Internal Members (6):</p>
+3479:                               <ol className="pl-6 list-decimal font-semibold text-slate-700 space-y-0.5">
+3480:                                 <li>Dr. R. Venkataraman</li>
+3481:                                 <li>Dr. S. Ananthi</li>
+3482:                                 <li>Dr. K. Balaji</li>
+3483:                                 <li>Dr. M. Chitra</li>
+3484:                                 <li>Dr. P. Dinesh</li>
+3485:                                 <li>Dr. V. Elango</li>
+3486:                               </ol>
+3487:                             </div>
+3488:                             
+3489:                             <div className="space-y-0.5 text-[11px]">
+3490:                               <p className="font-extrabold text-slate-900">External Members (6):</p>
+3491:                               <ol className="pl-6 list-decimal font-semibold text-slate-700 space-y-0.5">
+3492:                                 <li>Dr. M. Sathyapriya (NIT Trichy)</li>
+3493:                                 <li>Dr. R. Jayavel (Anna University)</li>
+3494:                                 <li>Dr. K. Srinivasan (NIT Trichy)</li>
+3495:                                 <li>Dr. A. Chandra (IIT Madras)</li>
+3496:                                 <li>Dr. S. Ramanujam (IISc Bangalore)</li>
+3497:                                 <li>Dr. V. Murugan (Pondicherry University)</li>
+3498:                               </ol>
+3499:                             </div>
+3500:                           </div>
+3501:                           <div className="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-2">
+3502:                             <p className="font-bold text-slate-800 uppercase text-[9px] tracking-wider border-b pb-1">DAC Recommendations</p>
+3503:                             <p className="italic font-medium leading-relaxed">
+3504:                               "Scholar should complete 12 credits of coursework focusing on advanced research methodology and domain subjects. Coursework mappings approved."
+3505:                             </p>
+3506:                           </div>
+3507:                         </div>
+3508:                       )
+3509:                     })()}
+3510: 
+3511:                     {phase === 'Comprehensive Viva' && (() => {
+3512:                       const isCompleted = s.progress >= 40
+3513:                       return (
+3514:                         <div className="space-y-4 text-xs text-slate-700">
+3515:                           <div className={`p-4 rounded-xl border ${isCompleted ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'}`}>
+3516:                             <div className="flex items-center gap-2">
+3517:                               {isCompleted ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Clock className="w-4 h-4 text-amber-600" />}
+3518:                               <p className="font-extrabold uppercase tracking-wide">Comprehensive Viva Status</p>
+3519:                             </div>
+3520:                             <p className="mt-2 font-medium text-[11px]">

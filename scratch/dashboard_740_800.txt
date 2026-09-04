@@ -1,0 +1,60 @@
+741:       e.target.reset()
+742:       alert('DAC Committee constituted successfully and submitted for Dean approval!')
+743:     }
+744: 
+745:     const handleAllotCourse = (e) => {
+746:       e.preventDefault()
+747:       const formData = new FormData(e.target)
+748:       const newAlloc = {
+749:         id: courseworkAllocations.length + 1,
+750:         scholar: formData.get('scholar'),
+751:         course: formData.get('course'),
+752:         credits: parseInt(formData.get('credits') || '4'),
+753:         type: formData.get('type'),
+754:         status: 'Approved'
+755:       }
+756:       setCourseworkAllocations([newAlloc, ...courseworkAllocations])
+757:       e.target.reset()
+758:       alert('Course successfully allocated to scholar!')
+759:     }
+760: 
+761:     const handleRequestViva = (e) => {
+762:       e.preventDefault()
+763:       const formData = new FormData(e.target)
+764:       const newRequest = {
+765:         id: vivaRequests.length + 1,
+766:         scholar: formData.get('scholar'),
+767:         date: formData.get('date'),
+768:         external: formData.get('external'),
+769:         status: 'Pending Approval'
+770:       }
+771:       setVivaRequests([newRequest, ...vivaRequests])
+772:       e.target.reset()
+773:       alert('Comprehensive Viva request filed successfully!')
+774:     }
+775: 
+776:     const handleScheduleColloquium = (e) => {
+777:       e.preventDefault()
+778:       const formData = new FormData(e.target)
+779:       const newColl = {
+780:         id: colloquiumSchedules.length + 1,
+781:         scholar: formData.get('scholar'),
+782:         topic: formData.get('topic'),
+783:         date: formData.get('date'),
+784:         status: 'Scheduled'
+785:       }
+786:       setColloquiumSchedules([newColl, ...colloquiumSchedules])
+787:       e.target.reset()
+788:       alert('Pre-Synopsis Colloquium scheduled successfully!')
+789:     }
+790: 
+791:     const handleSubmitInchRequest = (e) => {
+792:       e.preventDefault()
+793:       const formData = new FormData(e.target)
+794:       const newInch = {
+795:         id: inchRequests.length + 1,
+796:         scholar: formData.get('scholar'),
+797:         title: formData.get('title'),
+798:         date: formData.get('date'),
+799:         status: 'Submitted'
+800:       }

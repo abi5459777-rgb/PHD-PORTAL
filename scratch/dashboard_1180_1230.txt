@@ -1,0 +1,50 @@
+1181:                     </div>
+1182: 
+1183:                     <button type="submit" className="w-full flex items-center justify-center gap-1.5 bg-dsu-maroon hover:bg-red-800 text-white font-extrabold uppercase py-2.5 rounded-lg transition text-xs tracking-wider shadow-sm">
+1184:                       <Send className="w-3.5 h-3.5" />
+1185:                       Upload & Send to Registry
+1186:                     </button>
+1187:                   </form>
+1188: 
+1189:                   {/* List of uploaded documents for this scholar & phase */}
+1190:                   {uploadedMoms.filter(m => m.scholar === s.name && (m.type.includes(phase) || m.type.toLowerCase().includes(phase.toLowerCase()))).length > 0 && (
+1191:                     <div className="border-t border-slate-100 pt-2.5 space-y-2">
+1192:                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-wider">Uploaded Documents History</p>
+1193:                       <div className="space-y-1.5">
+1194:                         {uploadedMoms.filter(m => m.scholar === s.name && (m.type.includes(phase) || m.type.toLowerCase().includes(phase.toLowerCase()))).map((m, idx) => (
+1195:                           <div key={idx} className="bg-slate-50 p-2 rounded-lg border border-slate-100 flex items-center justify-between text-[11px]">
+1196:                             <div className="min-w-0 flex-1">
+1197:                               <p className="font-bold text-slate-800 truncate max-w-[130px]">{m.fileName}</p>
+1198:                               <p className="text-[9px] text-slate-500">{m.date}</p>
+1199:                             </div>
+1200:                             <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border-amber-200 shrink-0">{m.status}</span>
+1201:                           </div>
+1202:                         ))}
+1203:                       </div>
+1204:                     </div>
+1205:                   )}
+1206:                 </div>
+1207:               )
+1208:               }
+1209: 
+1210:             const renderFirstDacSupervisorWorkspace = (s) => {
+1211:               const tabClass = (tab) => `flex-1 py-2 text-center text-xs font-black uppercase tracking-wider border-b-2 transition duration-150 ${firstDacTab === tab ? 'border-dsu-maroon text-dsu-maroon' : 'border-transparent text-slate-400 hover:text-slate-600'}`
+1212: 
+1213:               const onAddExternal = (e) => {
+1214:                 e.preventDefault()
+1215:                 const formData = new FormData(e.target)
+1216:                 const list = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'External')
+1217:                 if (list.length >= 6) {
+1218:                   alert('You have already proposed 6 External Members!')
+1219:                   return
+1220:                 }
+1221:                 const newMember = {
+1222:                   id: 'ext_' + Date.now(),
+1223:                   scholar: s.name,
+1224:                   type: 'External',
+1225:                   name: formData.get('name'),
+1226:                   designation: formData.get('designation'),
+1227:                   institution: formData.get('institution'),
+1228:                   cvFileName: formData.get('cvFile') && formData.get('cvFile').name ? formData.get('cvFile').name : 'cv_uploaded.pdf'
+1229:                 }
+1230:                 setProposedDacMembers(prev => [...prev, newMember])

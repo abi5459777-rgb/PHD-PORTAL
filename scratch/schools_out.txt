@@ -1,0 +1,150 @@
+5171:           </section>
+5172:         )}
+5173: 
+5174:         {view === 'schools' && (() => {
+5175:           // Schools mock data
+5176:           const schoolsData = [
+5177:             { id: 'computing', name: 'School of Computing', guidesCount: 25, scholarsCount: 140 },
+5178:             { id: 'engineering', name: 'School of Engineering', guidesCount: 18, scholarsCount: 92 },
+5179:             { id: 'management', name: 'School of Management', guidesCount: 12, scholarsCount: 65 },
+5180:             { id: 'science', name: 'School of Science', guidesCount: 10, scholarsCount: 45 },
+5181:             { id: 'agriculture', name: 'School of Agricultural Sciences', guidesCount: 8, scholarsCount: 30 }
+5182:           ]
+5183: 
+5184:           // Guides mock data by school
+5185:           const guidesDataBySchool = {
+5186:             computing: [
+5187:               { name: 'Dr. Kumar', department: 'CSE', scholarsCount: 6, capacity: 8, vacancy: 2 },
+5188:               { name: 'Dr. Priya', department: 'AI & DS', scholarsCount: 4, capacity: 8, vacancy: 4 },
+5189:               { name: 'Dr. Ravi', department: 'ECE', scholarsCount: 8, capacity: 8, vacancy: 0 },
+5190:               { name: 'Dr. D. Srinivasan', department: 'Computer Science', scholarsCount: 5, capacity: 8, vacancy: 3 },
+5191:               { name: 'Dr. R. Venkataraman', department: 'Computer Science', scholarsCount: 4, capacity: 8, vacancy: 4 }
+5192:             ],
+5193:             engineering: [
+5194:               { name: 'Dr. S. K. Gupta', department: 'Mechanical Eng', scholarsCount: 8, capacity: 8, vacancy: 0 },
+5195:               { name: 'Dr. A. K. Sharma', department: 'Civil Eng', scholarsCount: 5, capacity: 8, vacancy: 3 },
+5196:               { name: 'Dr. Rajesh Khanna', department: 'Electrical Eng', scholarsCount: 6, capacity: 8, vacancy: 2 }
+5197:             ],
+5198:             management: [
+5199:               { name: 'Dr. D. Srinivasan (Mgt)', department: 'MBA', scholarsCount: 3, capacity: 8, vacancy: 5 },
+5200:               { name: 'Dr. Amit Patel', department: 'Finance', scholarsCount: 4, capacity: 8, vacancy: 4 }
+5201:             ],
+5202:             science: [
+5203:               { name: 'Dr. H. Subramanian (Phys)', department: 'Physics', scholarsCount: 3, capacity: 8, vacancy: 5 },
+5204:               { name: 'Dr. V. Rama', department: 'Chemistry', scholarsCount: 2, capacity: 8, vacancy: 6 }
+5205:             ],
+5206:             agriculture: [
+5207:               { name: 'Dr. Praveen K (Agri)', department: 'Agronomy', scholarsCount: 3, capacity: 8, vacancy: 5 }
+5208:             ]
+5209:           }
+5210: 
+5211:           // Scholars mock list by Guide Name
+5212:           const scholarsByGuide = {
+5213:             'Dr. Kumar': [
+5214:               { name: 'Arun Kumar', approval: 'First DAC Approval' },
+5215:               { name: 'Naveen M', approval: 'Inch Committee Approval' },
+5216:               { name: 'Vikram A', approval: 'None (All Cleared)' }
+5217:             ],
+5218:             'Dr. Priya': [
+5219:               { name: 'Akash V', approval: 'Colloquium Approval' },
+5220:               { name: 'Srinath V', approval: 'None (All Cleared)' }
+5221:             ],
+5222:             'Dr. Ravi': [
+5223:               { name: 'Deepa R', approval: 'Comprehensive Viva Approval' },
+5224:               { name: 'Harini K', approval: 'Synopsis Approval' },
+5225:               { name: 'Meera S', approval: 'Thesis Defense Approval' }
+5226:             ],
+5227:             'Dr. D. Srinivasan': [
+5228:               { name: 'Priya R', approval: 'None (All Cleared)' },
+5229:               { name: 'Rajesh Kumar', approval: 'None (All Cleared)' }
+5230:             ],
+5231:             'Dr. R. Venkataraman': [
+5232:               { name: 'Amit Kumar', approval: 'None (All Cleared)' },
+5233:               { name: 'Divya Menon', approval: 'None (All Cleared)' }
+5234:             ],
+5235:             'Dr. S. K. Gupta': [
+5236:               { name: 'Ajay Dev', approval: 'None (All Cleared)' }
+5237:             ],
+5238:             'Dr. A. K. Sharma': [
+5239:               { name: 'Karthik S', approval: 'None (All Cleared)' }
+5240:             ],
+5241:             'Dr. Rajesh Khanna': [
+5242:               { name: 'Meera Das', approval: 'None (All Cleared)' }
+5243:             ],
+5244:             'Dr. D. Srinivasan (Mgt)': [
+5245:               { name: 'Amit Kumar (Mgt)', approval: 'None (All Cleared)' }
+5246:             ],
+5247:             'Dr. Amit Patel': [
+5248:               { name: 'Aishwarya S (Mgt)', approval: 'None (All Cleared)' }
+5249:             ],
+5250:             'Dr. H. Subramanian (Phys)': [
+5251:               { name: 'Karthik S (Phys)', approval: 'None (All Cleared)' }
+5252:             ],
+5253:             'Dr. V. Rama': [
+5254:               { name: 'Deepa R (Chem)', approval: 'None (All Cleared)' }
+5255:             ],
+5256:             'Dr. Praveen K (Agri)': [
+5257:               { name: 'Arun Kumar (Agri)', approval: 'None (All Cleared)' }
+5258:             ]
+5259:           }
+5260: 
+5261:           // Scholar histories and pending details
+5262:           const scholarDetailsDb = {
+5263:             'Arun Kumar': {
+5264:               history: [
+5265:                 { phase: 'Coursework Registration', status: 'Approved', date: '10-Jan-2026', docs: ['coursework_form.pdf', 'fees_receipt.pdf'] }
+5266:               ],
+5267:               pending: {
+5268:                 phase: 'First DAC',
+5269:                 approval: 'First DAC Approval',
+5270:                 date: '15-Jun-2026',
+5271:                 docs: ['dac_proposal.pdf', 'dac_members_list.pdf', 'priya_dac1_mom.pdf']
+5272:               }
+5273:             },
+5274:             'Deepa R': {
+5275:               history: [
+5276:                 { phase: 'First DAC', status: 'Approved', date: '05-Feb-2026', docs: ['dac_report.pdf', 'first_dac_mom.pdf'] },
+5277:                 { phase: 'Coursework Clearance', status: 'Approved', date: '12-May-2026', docs: ['transcript.pdf', 'coursework_certificate.pdf'] }
+5278:               ],
+5279:               pending: {
+5280:                 phase: 'Comprehensive Viva',
+5281:                 approval: 'Comprehensive Viva Approval',
+5282:                 date: '18-Jun-2026',
+5283:                 docs: ['cv_syllabus.pdf', 'recommendation_letter.pdf', 'cv_mom.pdf']
+5284:               }
+5285:             },
+5286:             'Akash V': {
+5287:               history: [
+5288:                 { phase: 'First DAC', status: 'Approved', date: '12-Feb-2026', docs: ['dac_report.pdf'] },
+5289:                 { phase: 'Comprehensive Viva', status: 'Approved', date: '20-May-2026', docs: ['viva_mom.pdf'] }
+5290:               ],
+5291:               pending: {
+5292:                 phase: 'Colloquium',
+5293:                 approval: 'Colloquium Approval',
+5294:                 date: '20-Jun-2026',
+5295:                 docs: ['publication_form.pdf', 'journal_form.pdf', 'fulfilment_form.pdf']
+5296:               }
+5297:             },
+5298:             'Naveen M': {
+5299:               history: [
+5300:                 { phase: 'First DAC', status: 'Approved', date: '15-Mar-2026', docs: ['dac_report.pdf'] },
+5301:                 { phase: 'Comprehensive Viva', status: 'Approved', date: '10-Jun-2026', docs: ['viva_mom.pdf'] },
+5302:                 { phase: 'Colloquium', status: 'Approved', date: '18-Jun-2026', docs: ['colloquium_mom.pdf'] }
+5303:               ],
+5304:               pending: {
+5305:                 phase: 'Inch Committee',
+5306:                 approval: 'Inch Committee Approval',
+5307:                 date: '22-Jun-2026',
+5308:                 docs: ['thesis_draft.pdf', 'synopsis_draft.pdf', 'plagiarism_report.pdf']
+5309:               }
+5310:             },
+5311:             'Harini K': {
+5312:               history: [
+5313:                 { phase: 'First DAC', status: 'Approved', date: '02-Jan-2026', docs: ['dac_report.pdf'] },
+5314:                 { phase: 'Comprehensive Viva', status: 'Approved', date: '14-Apr-2026', docs: ['viva_mom.pdf'] },
+5315:                 { phase: 'Colloquium', status: 'Approved', date: '22-May-2026', docs: ['colloquium_mom.pdf'] },
+5316:                 { phase: 'Inch Committee', status: 'Approved', date: '15-Jun-2026', docs: ['inch_certificate.pdf'] }
+5317:               ],
+5318:               pending: {
+5319:                 phase: 'Synopsis',
+5320:                 approval: 'Synopsis Approval',

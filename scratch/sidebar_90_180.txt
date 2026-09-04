@@ -1,0 +1,90 @@
+91:   const CollapseBtn = ({ label, icon: Icon, open, active, onClick }) => (
+92:     <li>
+93:       <button onClick={onClick} className={`w-full flex items-center gap-3 px-3 py-1.5 rounded-md text-xs font-bold transition-all duration-150 ${active ? 'text-dsu-maroon' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}>
+94:         <Icon className={`w-4 h-4 shrink-0 text-dsu-maroon`} />
+95:         <span className="flex-1 text-left">{label}</span>
+96:         <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${open || active ? 'rotate-180' : ''}`} />
+97:       </button>
+98:     </li>
+99:   )
+100: 
+101:   // ── Milestone links (used by supervisor + dean roles) ────────
+102:   const supervisorMilestoneLinks = [
+103:     '/dashboard?view=dac', '/dashboard?view=viva', '/dashboard?view=colloquium',
+104:     '/dashboard?view=inch', '/dashboard?view=synopsis', '/dashboard?view=evaluation', '/dashboard?view=thesis'
+105:   ]
+106:   const scholarMilestoneLinks = [
+107:     '/dac-coursework', '/comprehensive-viva', '/colloquium',
+108:     '/inch-committee', '/synopsis', '/thesis-evaluation', '/thesis-defense'
+109:   ]
+110:   const deanApprovalLinks = [
+111:     '/dashboard?view=dac', '/dashboard?view=coursework', '/dashboard?view=colloquium',
+112:     '/dashboard?view=synopsis', '/dashboard?view=examiner', '/dashboard?view=thesis'
+113:   ]
+114: 
+115:   const vcApprovalLinks = [
+116:     '/dashboard?view=approvals'
+117:   ]
+118: 
+119:   const isMilestoneActive    = supervisorMilestoneLinks.some(l => isActive(l))
+120:   const isScholarMilestoneActive = scholarMilestoneLinks.some(l => isActive(l))
+121:   const isDeanApprovalActive = deanApprovalLinks.some(l => isActive(l))
+122:   const isDeanSchoolApprovalActive = [
+123:     '/dashboard?view=dac','/dashboard?view=viva','/dashboard?view=colloquium',
+124:     '/dashboard?view=inch','/dashboard?view=synopsis'
+125:   ].some(l => isActive(l))
+126:   const isVcApprovalActive = vcApprovalLinks.some(l => isActive(l))
+127: 
+128:   useEffect(() => {
+129:     if (isMilestoneActive) setMilestonesOpen(true)
+130:     if (isDeanApprovalActive || isDeanSchoolApprovalActive || isVcApprovalActive) setApprovalsOpen(true)
+131:   }, [
+132:     isMilestoneActive,
+133:     isDeanApprovalActive,
+134:     isDeanSchoolApprovalActive,
+135:     isVcApprovalActive
+136:   ])  // ════════════════════════════════════════════════════════════
+137:   // 1. SCHOLAR
+138:   // ════════════════════════════════════════════════════════════
+139:   if (role === 'scholar') return (
+140:     <aside className="w-72 bg-white border-r h-screen hidden md:flex md:flex-col select-none">
+141:       <Header />
+142:       <nav className="px-3 py-3 flex-1 overflow-y-auto">
+143:         <ul className="space-y-0">
+144:           <NavItem to="/dashboard"          label="Dashboard"             icon={Home} />
+145:           <NavItem to="/profile"            label="My Profile"            icon={User} />
+146:           <NavItem to="/dac-coursework"     label="First DAC & Course Work" icon={ShieldCheck} />
+147:           <NavItem to="/comprehensive-viva" label="Comprehensive Viva"    icon={CheckCircle2} />
+148:           <NavItem to="/colloquium"         label="Colloquium"            icon={Calendar} />
+149:           <NavItem to="/inch-committee"     label="Inch Committee"        icon={FileCheck} />
+150:           <NavItem to="/synopsis"           label="Synopsis"              icon={ClipboardList} />
+151:           <NavItem to="/thesis-evaluation"  label="Thesis Evaluation"     icon={Layers} />
+152:           <NavItem to="/thesis-defense"     label="Thesis Defense"        icon={Award} />
+153:           <NavItem to="/documents"          label="Documents Repository"  icon={FileArchive} />
+154:           <Sep />
+155:           <NavItem to="/notifications" label="Notifications" icon={Bell} />
+156:           <NavItem to="/settings"      label="Settings"      icon={Cog} />
+157:         </ul>
+158:       </nav>
+159:     </aside>
+160:   )
+161: 
+162:   // ════════════════════════════════════════════════════════════
+163:   // 2. SUPERVISOR
+164:   // ════════════════════════════════════════════════════════════
+165:   if (role === 'supervisor') return (
+166:     <aside className="w-72 bg-white border-r h-screen hidden md:flex md:flex-col select-none">
+167:       <Header />
+168:       <nav className="px-3 py-3 flex-1 overflow-y-auto">
+169:         <ul className="space-y-0">
+170:           <NavItem to="/dashboard?view=home"       label="Dashboard"        icon={Home} />
+171:           <NavItem to="/profile"                   label="My Profile"       icon={User} />
+172:           <NavItem to="/dashboard?view=scholars"   label="Scholars"         icon={Users} />
+173:           <Sep />
+174:           <NavItem to="/dashboard?view=mom" label="Documents & MoM" icon={FolderOpen} />
+175:           <Sep />
+176:           <NavItem to="/notifications" label="Notifications" icon={Bell} />
+177:           <NavItem to="/settings"      label="Settings"      icon={Cog} />
+178:         </ul>
+179:       </nav>
+180:     </aside>

@@ -1,0 +1,50 @@
+3651:                           </div>
+3652:                           <div className="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-1.5">
+3653:                             <p className="font-bold text-slate-800 uppercase text-[9px] tracking-wider border-b pb-1 mb-1.5">Defense Schedule</p>
+3654:                             <p className="flex justify-between"><span>Date:</span> <span className="font-bold text-slate-900">{isCompleted ? '20 Jul 2026' : 'To be scheduled'}</span></p>
+3655:                             <p className="flex justify-between"><span>Venue:</span> <span className="font-bold text-slate-900">Research Auditorium, Main Block</span></p>
+3656:                             <p className="flex justify-between"><span>Final Decision:</span> <span className="font-bold text-emerald-600">{isCompleted ? 'Recommended for PhD Award' : 'Pending'}</span></p>
+3657:                           </div>
+3658:                           <div className="border border-slate-200 rounded-xl p-4 bg-slate-50/50 space-y-1.5">
+3659:                             <p className="font-bold text-slate-800 uppercase text-[9px] tracking-wider border-b pb-1 mb-1.5">Board Remarks</p>
+3660:                             <p className="italic font-medium leading-relaxed">
+3661:                               {isCompleted 
+3662:                                 ? `"Oral defense completed successfully. The board unanimously recommends the award of Doctor of Philosophy (PhD) to the scholar."`
+3663:                                 : `"Defense panel scheduling will proceed once all thesis evaluation reports are received and cleared."`}
+3664:                             </p>
+3665:                           </div>
+3666:                         </div>
+3667:                       )
+3668:                     })()}
+3669:                   </div>
+3670: 
+3671:                   {/* Research Supervisor Content Box (Forms & tracking actions) */}
+3672:                   {phase === 'First DAC' ? (
+3673:                     renderFirstDacSupervisorWorkspace(s)
+3674:                   ) : phase === 'Comprehensive Viva' ? (
+3675:                     renderComprehensiveVivaSupervisorWorkspace(s)
+3676:                   ) : phase === 'Colloquium' ? (
+3677:                     renderColloquiumSupervisorWorkspace(s)
+3678:                   ) : phase === 'Inch Committee' ? (
+3679:                     renderInchCommitteeSupervisorWorkspace(s)
+3680:                   ) : phase === 'Synopsis' ? (
+3681:                     renderSynopsisSupervisorWorkspace(s)
+3682:                   ) : phase === 'Thesis Defense' ? (
+3683:                     renderThesisDefenseSupervisorWorkspace(s)
+3684:                   ) : (
+3685:                     <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-5">
+3686:                       <div className="border-b pb-2">
+3687:                         <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Research Supervisor view</h3>
+3688:                         <p className="text-[10px] text-slate-400 font-medium mt-0.5">Forms & tracking details for this milestone</p>
+3689:                       </div>
+3690: 
+3691:                     {phase === 'Thesis Evaluation' && (
+3692:                       <div className="space-y-4">
+3693:                         <form onSubmit={onForwardEvaluation} className="space-y-3 text-xs font-semibold text-slate-700">
+3694:                           <h4 className="text-[10px] font-bold text-slate-500 uppercase">Forward Thesis for Evaluation</h4>
+3695:                           <div>
+3696:                             <label className="block mb-1 text-slate-600">Thesis Title</label>
+3697:                             <input type="text" name="title" defaultValue={s.topic} placeholder="Secure AI-Driven Smart Healthcare Framework" className="w-full border p-2 rounded-lg bg-slate-50 focus:outline-none focus:border-dsu-maroon" required />
+3698:                           </div>
+3699:                           <div>
+3700:                             <label className="block mb-1 text-slate-600">Submission Date</label>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "n1",
+    "title": "DAC Approval",
+    "message": "Your DAC presentation has been approved for the next committee cycle.",
+    "body": "Your DAC presentation has been approved for the next committee cycle.",
+    "date": "2026-06-14",
+    "status": "Unread",
+    "read": false,
+    "priority": "High"
+  },
+  {
+    "id": "n2",
+    "title": "Submission Deadline",
+    "message": "Thesis synopsis submission is due in 10 days.",
+    "body": "Thesis synopsis submission is due in 10 days.",
+    "date": "2026-06-12",
+    "status": "Unread",
+    "read": false,
+    "priority": "Medium"
+  },
+  {
+    "id": "n3",
+    "title": "Coursework Verification",
+    "message": "Coursework completion documents were verified by the department office.",
+    "body": "Coursework completion documents were verified by the department office.",
+    "date": "2026-06-10",
+    "status": "Read",
+    "read": true,
+    "priority": "Low"
+  },
+  {
+    "id": "n4",
+    "title": "Progress Report Reminder",
+    "message": "Submit your next progress report before the deadline to avoid escalation.",
+    "body": "Submit your next progress report before the deadline to avoid escalation.",
+    "date": "2026-06-08",
+    "status": "Read",
+    "read": true,
+    "priority": "Medium"
+  }
+]

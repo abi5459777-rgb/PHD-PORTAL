@@ -1,0 +1,27 @@
+301:                 <p className="text-xs font-black text-amber-700">{data.courseworkDeadline}</p>
+302:               </div>
+303:               <div className="flex items-center justify-between p-3 bg-slate-50 border border-slate-100 rounded-xl">
+304:                 <p className="text-[10px] font-black text-slate-700">Requirement</p>
+305:                 <p className="text-[10px] font-black text-slate-600">{data.completionReq}</p>
+306:               </div>
+307:             </div>
+308:           </div>
+309:         </div>
+310:       </div>
+311: 
+312:       {/* ── Remark (full width) ──────────────────── */}
+313:       <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+314:         <h2 className="text-[10px] font-black uppercase tracking-wider text-slate-400 mb-3">
+315:           DAC Remark
+316:         </h2>
+317:         <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+318:           <ClipboardList className="w-4 h-4 text-slate-400 mb-2" />
+319:           <p className="text-xs text-slate-700 leading-relaxed font-medium italic">
+320:             "{data.remark}"
+321:           </p>
+322:         </div>
+323:       </div>
+324: 
+325:     </div>
+326:   )
+327: }

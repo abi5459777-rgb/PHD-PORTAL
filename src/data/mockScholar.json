@@ -1,0 +1,10 @@
+{
+  "name": "Priya R",
+  "scholarId": "DSU-PHD-2022-045",
+  "regNo": "DSU/PhD/2022/045",
+  "department": "Computer Science",
+  "guide": "Dr. D. Srinivasan",
+  "supervisorName": "Dr. D. Srinivasan",
+  "photo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='128' height='128' viewBox='0 0 128 128'><rect width='128' height='128' rx='64' fill='%237B1E3A'/><circle cx='64' cy='48' r='22' fill='%23F5D6B8'/><path d='M28 114c5-24 23-38 36-38s31 14 36 38' fill='%23F5D6B8'/><path d='M42 62c6 8 16 13 22 13s16-5 22-13' fill='none' stroke='%237B1E3A' stroke-width='5' stroke-linecap='round'/></svg>",
+  "status": "Active"
+}

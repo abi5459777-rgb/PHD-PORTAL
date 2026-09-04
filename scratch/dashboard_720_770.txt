@@ -1,0 +1,50 @@
+721:           </div>
+722:         </section>
+723:       </div>
+724:     )
+725:   }
+726: 
+727:   // 2. Supervisor Dashboard Views
+728:   if (role === 'supervisor') {
+729:     const handleCreateDac = (e) => {
+730:       e.preventDefault()
+731:       const formData = new FormData(e.target)
+732:       const newDac = {
+733:         id: dacPanels.length + 1,
+734:         scholar: formData.get('scholar'),
+735:         internal: formData.get('internal'),
+736:         external: formData.get('external'),
+737:         date: formData.get('date'),
+738:         status: 'Pending Dean Approval'
+739:       }
+740:       setDacPanels([newDac, ...dacPanels])
+741:       e.target.reset()
+742:       alert('DAC Committee constituted successfully and submitted for Dean approval!')
+743:     }
+744: 
+745:     const handleAllotCourse = (e) => {
+746:       e.preventDefault()
+747:       const formData = new FormData(e.target)
+748:       const newAlloc = {
+749:         id: courseworkAllocations.length + 1,
+750:         scholar: formData.get('scholar'),
+751:         course: formData.get('course'),
+752:         credits: parseInt(formData.get('credits') || '4'),
+753:         type: formData.get('type'),
+754:         status: 'Approved'
+755:       }
+756:       setCourseworkAllocations([newAlloc, ...courseworkAllocations])
+757:       e.target.reset()
+758:       alert('Course successfully allocated to scholar!')
+759:     }
+760: 
+761:     const handleRequestViva = (e) => {
+762:       e.preventDefault()
+763:       const formData = new FormData(e.target)
+764:       const newRequest = {
+765:         id: vivaRequests.length + 1,
+766:         scholar: formData.get('scholar'),
+767:         date: formData.get('date'),
+768:         external: formData.get('external'),
+769:         status: 'Pending Approval'
+770:       }

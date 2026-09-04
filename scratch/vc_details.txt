@@ -1,0 +1,224 @@
+8061:                             View
+8062:                           </button>
+8063:                         </td>
+8064:                       </tr>
+8065:                     ))
+8066:                   })()}
+8067:                 </tbody>
+8068:               </table>
+8069:             </div>
+8070:           </section>
+8071:         )}
+8072: 
+8073:         {/* 3. Approval Details View */}
+8074:         {activeVcApproval && (
+8075:           <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+8076:             <div className="flex items-center justify-between border-b pb-4">
+8077:               <div>
+8078:                 <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide">Vice Chancellor Approval Details</h3>
+8079:                 <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Review and authorize submitted milestone files</p>
+8080:               </div>
+8081:               <button
+8082:                 onClick={() => {
+8083:                   setActiveVcApproval(null)
+8084:                   navigate('/dashboard?view=approvals')
+8085:                 }}
+8086:                 className="px-4 py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold uppercase tracking-wider text-[9px] rounded-lg transition"
+8087:               >
+8088:                 Back to List
+8089:               </button>
+8090:             </div>
+8091: 
+8092:             {/* Profile Info Card */}
+8093:             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+8094:               <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 space-y-2 text-xs">
+8095:                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Scholar details</p>
+8096:                 <p className="text-sm font-black text-slate-800">{activeVcApproval.scholar}</p>
+8097:                 <p className="font-semibold text-slate-600">School: <span className="text-slate-800">{activeVcApproval.school}</span></p>
+8098:                 <p className="font-semibold text-slate-600">Department: <span className="text-slate-800">{activeVcApproval.department}</span></p>
+8099:               </div>
+8100: 
+8101:               <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 space-y-2 text-xs">
+8102:                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Milestone details</p>
+8103:                 <p className="text-sm font-black text-slate-800">{activeVcApproval.type}</p>
+8104:                 <p className="font-semibold text-slate-600">Date Submitted: <span className="text-slate-800">{activeVcApproval.date}</span></p>
+8105:                 <p className="font-semibold text-slate-600">Research Guide: <span className="text-slate-800">{activeVcApproval.guide}</span></p>
+8106:               </div>
+8107:             </div>
+8108: 
+8109:             {/* Milestone Description Box */}
+8110:             <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs">
+8111:               <h4 className="font-extrabold text-[10px] text-slate-400 uppercase tracking-wider">Milestone Clearance Summary</h4>
+8112:               
+8113:               {activeVcApproval.type === 'Examiner Panel Approval' && (
+8114:                 <div className="space-y-2 font-semibold">
+8115:                   <p className="text-slate-600">The following external panel members have been nominated by the DAC and School Dean:</p>
+8116:                   <ul className="list-disc pl-5 text-slate-800 space-y-1">
+8117:                     {activeVcApproval.original.suggestedPanel && activeVcApproval.original.suggestedPanel.map((member, i) => (
+8118:                       <li key={i}>{member}</li>
+8119:                     ))}
+8120:                   </ul>
+8121:                 </div>
+8122:               )}
+8123: 
+8124:               {activeVcApproval.type === 'Thesis Evaluation Approval' && (
+8125:                 <div className="space-y-2 font-semibold">
+8126:                   <p className="text-slate-600">Summary of Foreign & Indian Evaluators reports:</p>
+8127:                   <p className="p-3 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 italic">
+8128:                     "{activeVcApproval.original.evaluationSummary}"
+8129:                   </p>
+8130:                 </div>
+8131:               )}
+8132: 
+8133:               {activeVcApproval.type === 'Final PhD Approval' && (
+8134:                 <div className="space-y-2 font-semibold">
+8135:                   <p className="text-slate-600">Proposed thesis topic cleared by the evaluation committee:</p>
+8136:                   <p className="p-3 bg-slate-50 border border-slate-100 rounded-lg text-slate-800 font-bold">
+8137:                     "{activeVcApproval.original.topic}"
+8138:                   </p>
+8139:                 </div>
+8140:               )}
+8141:             </div>
+8142: 
+8143:             {/* Executive Action Controls */}
+8144:             <div className="pt-4 border-t flex flex-col sm:flex-row sm:items-center justify-end gap-3">
+8145:               <button
+8146:                 onClick={() => {
+8147:                   const reason = prompt('Enter reason for returning the request to the Research Office:')
+8148:                   if (!reason) return
+8149: 
+8150:                   if (activeVcApproval.source === 'examiners') {
+8151:                     setVcExaminers(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Denied' } : x))
+8152:                   } else if (activeVcApproval.source === 'evaluations') {
+8153:                     setVcEvaluations(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Denied' } : x))
+8154:                   } else if (activeVcApproval.source === 'degrees') {
+8155:                     setVcFinalDegrees(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Denied' } : x))
+8156:                   }
+8157: 
+8158:                   // Update notifications in localStorage
+8159:                   const savedNotifs = localStorage.getItem('dsu_vc_notifications')
+8160:                   if (savedNotifs) {
+8161:                     try {
+8162:                       const parsed = JSON.parse(savedNotifs)
+8163:                       const updated = parsed.filter(n => !(n.scholar === activeVcApproval.scholar && n.approval === activeVcApproval.type))
+8164:                       localStorage.setItem('dsu_vc_notifications', JSON.stringify(updated))
+8165:                       window.dispatchEvent(new Event('notifications_updated'))
+8166:                     } catch(e) {}
+8167:                   }
+8168: 
+8169:                   alert(`Request returned. Returned to Research Office with remarks: "${reason}"`)
+8170:                   setActiveVcApproval(null)
+8171:                   navigate('/dashboard?view=approvals')
+8172:                 }}
+8173:                 className="px-6 py-2.5 bg-white hover:bg-slate-50 text-[#7B1E3A] border border-slate-200 font-bold uppercase tracking-wider text-[10px] rounded-xl transition shadow-sm text-center"
+8174:               >
+8175:                 Deny Request
+8176:               </button>
+8177: 
+8178:               <button
+8179:                 onClick={() => {
+8180:                   if (activeVcApproval.source === 'examiners') {
+8181:                     setVcExaminers(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Examiner Panel Signed' } : x))
+8182:                   } else if (activeVcApproval.source === 'evaluations') {
+8183:                     setVcEvaluations(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Defense Sign-off Completed' } : x))
+8184:                   } else if (activeVcApproval.source === 'degrees') {
+8185:                     setVcFinalDegrees(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Approved' } : x))
+8186:                   }
+8187: 
+8188:                   // Update notifications in localStorage
+8189:                   const savedNotifs = localStorage.getItem('dsu_vc_notifications')
+8190:                   if (savedNotifs) {
+8191:                     try {
+8192:                       const parsed = JSON.parse(savedNotifs)
+8193:                       const updated = parsed.filter(n => !(n.scholar === activeVcApproval.scholar && n.approval === activeVcApproval.type))
+8194:                       localStorage.setItem('dsu_vc_notifications', JSON.stringify(updated))
+8195:                       window.dispatchEvent(new Event('notifications_updated'))
+8196:                     } catch(e) {}
+8197:                   }
+8198: 
+8199:                   alert('Request successfully signed and approved by the Vice Chancellor.')
+8200:                   setActiveVcApproval(null)
+8201:                   navigate('/dashboard?view=approvals')
+8202:                 }}
+8203:                 className="px-6 py-2.5 bg-dsu-maroon hover:bg-red-800 text-white font-bold uppercase tracking-wider text-[10px] rounded-xl shadow-md transition text-center"
+8204:               >
+8205:                 Approve Milestone
+8206:               </button>
+8207:             </div>
+8208:           </section>
+8209:         )}
+8210:       </div>
+8211:     )
+8212:   }
+8213: 
+8214:   // 9. Administrator Dashboard View
+8215:   if (role === 'admin') {
+8216:     return (
+8217:       <div className="space-y-6">
+8218:         {/* Welcome Header */}
+8219:         <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+8220:           <div>
+8221:             <div className="text-xl font-black text-dsu-maroon uppercase tracking-wide">Welcome, {profileData.name || 'Systems Administrator'}</div>
+8222:             <div className="text-sm text-slate-500 font-semibold mt-1">System Administration Panel</div>
+8223:           </div>
+8224:           <div className="text-left md:text-right">
+8225:             <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Admin ID</div>
+8226:             <div className="text-base font-extrabold text-slate-800">{profileData.sub || 'DSU-ADMIN-01'}</div>
+8227:           </div>
+8228:         </section>
+8229: 
+8230:         {/* Quick Stats Grid */}
+8231:         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+8232:           <StatCard title="Total Users" value="254" />
+8233:           <StatCard title="Active Users" value="180" />
+8234:           <StatCard title="Pending Requests" value="5" />
+8235:           <StatCard title="System Health" value="99.98%" />
+8236:         </section>
+8237: 
+8238:         {/* Admin Logs / Events */}
+8239:         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+8240:           <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden text-xs">
+8241:             <div className="px-5 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+8242:               <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide">Recent System logs</h3>
+8243:             </div>
+8244:             <div className="p-4 space-y-3 font-semibold text-slate-700">
+8245:               <div className="p-3 bg-slate-50 border rounded-xl flex items-center justify-between">
+8246:                 <div>
+8247:                   <p className="text-slate-850">New Scholar account created for DSU-PHD-2026-002</p>
+8248:                   <p className="text-[10px] text-slate-400">10 mins ago • Registration Event</p>
+8249:                 </div>
+8250:                 <span className="bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded text-[10px]">Logged</span>
+8251:               </div>
+8252:               <div className="p-3 bg-slate-50 border rounded-xl flex items-center justify-between">
+8253:                 <div>
+8254:                   <p className="text-slate-850">Role assigned: Dr. R. Gopi assigned Supervisor</p>
+8255:                   <p className="text-[10px] text-slate-400">32 mins ago • Role Assignment</p>
+8256:                 </div>
+8257:                 <span className="bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded text-[10px]">Logged</span>
+8258:               </div>
+8259:               <div className="p-3 bg-slate-50 border rounded-xl flex items-center justify-between">
+8260:                 <div>
+8261:                   <p className="text-slate-850">Database backup executed successfully (Size: 2.1 GB)</p>
+8262:                   <p className="text-[10px] text-slate-400">1 hour ago • System Event</p>
+8263:                 </div>
+8264:                 <span className="bg-emerald-100 text-emerald-700 font-bold px-2 py-0.5 rounded text-[10px]">Backup OK</span>
+8265:               </div>
+8266:             </div>
+8267:           </div>
+8268: 
+8269:           <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4 text-xs font-semibold">
+8270:             <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide border-b pb-2">Admin Configuration Tools</h3>
+8271:             <button className="w-full bg-[#7B1E3A] hover:bg-red-800 text-white font-bold py-2.5 rounded-xl uppercase tracking-wider text-[10px] shadow-sm transition flex items-center justify-center gap-1.5">
+8272:               <Shield className="h-3.5 w-3.5" /> Configure Security Filters
+8273:             </button>
+8274:             <button className="w-full bg-[#001c4f] hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl uppercase tracking-wider text-[10px] shadow-sm transition flex items-center justify-center gap-1.5">
+8275:               <RefreshCw className="h-3.5 w-3.5" /> Execute Server Cache Flush
+8276:             </button>
+8277:           </div>
+8278:         </section>
+8279:       </div>
+8280:     )
+8281:   }
+8282: 
+8283:   return <div>Role not recognized.</div>
+8284: }

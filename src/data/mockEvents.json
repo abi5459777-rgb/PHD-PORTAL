@@ -1,0 +1,42 @@
+[
+  {
+    "id": "e1",
+    "title": "DAC Meeting Dates",
+    "description": "Quarterly DAC review meeting for current research progress and approvals.",
+    "date": "2026-06-20",
+    "priority": "High",
+    "route": "/dac"
+  },
+  {
+    "id": "e2",
+    "title": "Coursework Deadlines",
+    "description": "Final deadline for course work submissions, uploads, and verification.",
+    "date": "2026-06-28",
+    "priority": "Medium",
+    "route": "/coursework"
+  },
+  {
+    "id": "e3",
+    "title": "Progress Report Submission Dates",
+    "description": "Submit the semester progress report with supervisor remarks and attachments.",
+    "date": "2026-07-05",
+    "priority": "High",
+    "route": "/progress-reports"
+  },
+  {
+    "id": "e4",
+    "title": "Colloquium Schedule",
+    "description": "Upcoming colloquium presentation slots and faculty review sessions.",
+    "date": "2026-08-05",
+    "priority": "Medium",
+    "route": "/colloquium"
+  },
+  {
+    "id": "e5",
+    "title": "Thesis Milestones",
+    "description": "Synopsis, examiner review, thesis submission, and defense checkpoints.",
+    "date": "2026-08-18",
+    "priority": "High",
+    "route": "/thesis-status"
+  }
+]

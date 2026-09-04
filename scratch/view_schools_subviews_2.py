@@ -1,0 +1,8 @@
+with open(r"C:\Users\abi86\Downloads\DSU\DSU-06\src\pages\Dashboard.jsx", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+
+with open(r"C:\Users\abi86\Downloads\DSU\DSU-06\scratch\schools_subviews_out_2.txt", "w", encoding="utf-8") as out:
+    for i in range(5550, 5700):
+        if i < len(lines):
+            out.write(f"{i+1}: {lines[i]}")
+print("Saved schools subviews part 2.")

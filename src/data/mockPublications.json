@@ -1,0 +1,10 @@
+{
+  "journal": 2,
+  "conference": 3,
+  "patents": 0,
+  "chapters": 1,
+  "list": [
+    {"id":"p1","title":"Paper A","type":"Journal","year":2025},
+    {"id":"p2","title":"Paper B","type":"Conference","year":2024}
+  ]
+}

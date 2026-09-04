@@ -1,0 +1,120 @@
+1231:                 e.target.reset()
+1232:               }
+1233: 
+1234:               const onAddInternal = (e) => {
+1235:                 e.preventDefault()
+1236:                 const formData = new FormData(e.target)
+1237:                 const list = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'Internal')
+1238:                 if (list.length >= 6) {
+1239:                   alert('You have already proposed 6 Internal Members!')
+1240:                   return
+1241:                 }
+1242:                 const newMember = {
+1243:                   id: 'int_' + Date.now(),
+1244:                   scholar: s.name,
+1245:                   type: 'Internal',
+1246:                   name: formData.get('name'),
+1247:                   designation: formData.get('designation'),
+1248:                   department: formData.get('department')
+1249:                 }
+1250:                 setProposedDacMembers(prev => [...prev, newMember])
+1251:                 e.target.reset()
+1252:               }
+1253: 
+1254:               const onDeleteMember = (id) => {
+1255:                 setProposedDacMembers(prev => prev.filter(m => m.id !== id))
+1256:               }
+1257: 
+1258:               const onSubmitDacPanel = () => {
+1259:                 const extCount = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'External').length
+1260:                 const intCount = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'Internal').length
+1261:                 if (extCount !== 6 || intCount !== 6) {
+1262:                   alert('You must propose exactly 6 External and 6 Internal members to submit!')
+1263:                   return
+1264:                 }
+1265:                 const newPanel = {
+1266:                   id: dacPanels.length + 1,
+1267:                   scholar: s.name,
+1268:                   internal: proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'Internal').map(m => m.name).join(', '),
+1269:                   external: proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'External').map(m => m.name).join(', '),
+1270:                   date: new Date().toISOString().split('T')[0],
+1271:                   status: 'Pending Dean Approval'
+1272:                 }
+1273:                 setDacPanels([newPanel, ...dacPanels])
+1274:                 alert('12-member DAC panel proposed successfully and forwarded for Dean approval!')
+1275:               }
+1276: 
+1277:               const onScheduleDacMeeting = (e) => {
+1278:                 e.preventDefault()
+1279:                 const formData = new FormData(e.target)
+1280:                 const newMeeting = {
+1281:                   id: dacMeetings.length + 1,
+1282:                   reqNo: formData.get('reqNo'),
+1283:                   scholar: s.name,
+1284:                   date: formData.get('date'),
+1285:                   time: formData.get('time'),
+1286:                   venue: formData.get('venue'),
+1287:                   status: 'Submitted'
+1288:                 }
+1289:                 setDacMeetings([newMeeting, ...dacMeetings])
+1290:                 e.target.reset()
+1291:                 alert('First DAC advisory meeting requested successfully!')
+1292:               }
+1293: 
+1294:               const onAddCoursework = (e) => {
+1295:                 e.preventDefault()
+1296:                 const formData = new FormData(e.target)
+1297:                 const newCourse = {
+1298:                   id: courseworkAllocations.length + 1,
+1299:                   scholar: s.name,
+1300:                   course: formData.get('courseName'),
+1301:                   credits: parseInt(formData.get('credits') || '4'),
+1302:                   type: formData.get('courseType'),
+1303:                   code: '',
+1304:                   status: 'Approved'
+1305:                 }
+1306:                 setCourseworkAllocations([...courseworkAllocations, newCourse])
+1307:                 e.target.reset()
+1308:                 alert('Coursework course allocated successfully!')
+1309:               }
+1310: 
+1311:               const onGenerateCourseCode = (courseId) => {
+1312:                 setCourseworkAllocations(prev => prev.map(c => {
+1313:                   if (c.id === courseId) {
+1314:                     const rand = Math.floor(100 + Math.random() * 900)
+1315:                     const deptCode = s.dept === 'Computer Science' ? 'CS' : 'PHD'
+1316:                     const prefix = c.type === 'Mandatory Course' ? 'RM' : 'SS'
+1317:                     return { ...c, code: `${prefix}-${deptCode}-${rand}` }
+1318:                   }
+1319:                   return c
+1320:                 }))
+1321:               }
+1322: 
+1323:               const extList = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'External')
+1324:               const intList = proposedDacMembers.filter(m => m.scholar === s.name && m.type === 'Internal')
+1325:               const scholarMeetings = dacMeetings.filter(m => m.scholar === s.name)
+1326:               const scholarCourses = courseworkAllocations.filter(c => c.scholar === s.name)
+1327: 
+1328:               return (
+1329:                 <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+1330:                   <div className="flex border-b border-slate-100 pb-1">
+1331:                     <button onClick={() => setFirstDacTab('coursework')} className={tabClass('coursework')}>
+1332:                       Coursework ({scholarCourses.length})
+1333:                     </button>
+1334:                     <button onClick={() => setFirstDacTab('meeting')} className={tabClass('meeting')}>
+1335:                       Advisory Meeting ({scholarMeetings.length})
+1336:                     </button>
+1337:                     <button onClick={() => setFirstDacTab('panel')} className={tabClass('panel')}>
+1338:                       DAC Panel ({extList.length + intList.length}/12)
+1339:                     </button>
+1340:                     <button onClick={() => setFirstDacTab('mom')} className={tabClass('mom')}>
+1341:                       Upload MoM
+1342:                     </button>
+1343:                   </div>
+1344: 
+1345:                   {firstDacTab === 'panel' && (
+1346:                     <div className="space-y-4">
+1347:                       <div className="flex items-center justify-between">
+1348:                         <div>
+1349:                           <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Propose DAC Committee Panel</h4>
+1350:                           <p className="text-[10px] text-slate-400 font-medium mt-0.5">DSU Regulations require exactly 6 External and 6 Internal members.</p>

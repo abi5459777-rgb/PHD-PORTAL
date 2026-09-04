@@ -1,0 +1,155 @@
+--- Term: 'Thesis Evaluation' (Total 22) ---
+Line 55: { key: 'thesis-eval',   title: 'Thesis Evaluation',        status: 'current' },
+Line 286: { phase: 'Thesis Evaluation', status: 'Approved', date: '20-Sep-2024', documents: ['evaluator_reports.pdf', 'thesis_final.pdf'] }
+Line 330: { phase: 'Thesis Evaluation', status: 'Approved', date: '20-Sep-2024', documents: ['evaluator_reports.pdf', 'thesis_final.pdf'] }
+Line 442: case 'Thesis Evaluation':
+Line 579: type: 'Thesis Evaluation Approval',
+Line 869: { name: 'Priya R',      stage: 'Thesis Evaluation', progress: 85  },
+Line 930: { name: 'Priya R',      reg: 'DSU-PHD-2022-045', dept: 'Computer Science', topic: 'Secure AI-Driven Framework for Smart Healthcare Systems',     status: 'Active',      progress: 85, milestone: 'Thesis Evaluation', pubs: 4, scopus: 3, patents: 1, pending: 'Thesis Review Pending',           meeting: 'Synopsis Meeting',   meetDate: '12 Jul 2026' },
+Line 1097: phase === 'Thesis Evaluation' ? 'Thesis Evaluation Review' :
+Line 3540: {phase === 'Thesis Evaluation' && (() => {
+Line 3547: <p className="font-extrabold uppercase tracking-wide">Thesis Evaluation Status</p>
+Line 3625: {phase === 'Thesis Evaluation' && (
+Line 4359: {/* ── Section 1: Thesis Evaluation Request Form ── */}
+Line 4396: {/* ── Section 2: Thesis Evaluation Status ── */}
+Line 5090: <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide border-b pb-2">Thesis Evaluation Decisions & Viva Approval</h3>
+Line 6061: { name: 'Priya R', topic: 'Secure AI-Driven Smart Healthcare', status: 'Thesis Evaluation', year: '2022' },
+Line 6084: { name: 'Kishore Kumar', topic: 'Hydroelectric Generator Control', status: 'Thesis Evaluation', year: '2022' },
+Line 6103: case 'Thesis Evaluation':
+Line 7374: type: 'Thesis Evaluation Approval',
+Line 7424: <StatCard title="Pending Thesis Evaluation Approvals" value={vcEvaluations.filter(e => e.status === 'Pending Defense Sign-off').length.toString()} />
+Line 7502: { id: 'thesis', label: 'Thesis Evaluation' },
+Line 7557: if (vcApprovalCategory === 'thesis' && item.type !== 'Thesis Evaluation Approval') return false
+Line 7662: {activeVcApproval.type === 'Thesis Evaluation Approval' && (
+--- Term: 'Kumar' (Total 59) ---
+Line 66: { id: 'DSU-PHD-2023-012', name: 'Rajesh Kumar', dept: 'Computer Science', topic: 'Blockchain for Decentralized Cloud IoT', progress: 50, status: 'Active' },
+Line 71: { id: 2, text: 'Evaluate draft thesis submission for Rajesh Kumar', category: 'Thesis', date: 'Due in 5 days', severity: 'medium', done: false },
+Line 79: { id: 2, scholar: 'Rajesh Kumar', course: 'Research Methodology', credits: 4, type: 'Core', code: 'RM-CS-102', status: 'Approved' }
+Line 87: { id: 1, reqNo: 'REQ-VIVA-0012', scholar: 'Rajesh Kumar', date: '2026-07-10', time: '11:00 AM', venue: 'Research Cell Auditorium 2', external: 'Dr. G. Loganathan (IIT Madras)', status: 'Pending Approval' }
+Line 94: { id: 1, scholar: 'Rajesh Kumar', name: 'Dr. R. Venkataraman', designation: 'Professor', institution: 'DSU', role: 'Internal Expert' },
+Line 95: { id: 2, scholar: 'Rajesh Kumar', name: 'Dr. G. Loganathan', designation: 'Professor', institution: 'IIT Madras', role: 'External Expert' }
+Line 102: { id: 2, scholar: 'Rajesh Kumar', period: 'Jan 2026 - Jun 2026', submissionDate: '2026-06-02', status: 'Approved', fileName: 'progress_report_rajesh.pdf' },
+Line 106: { id: 1, reqNo: 'REQ-COLL-0021', scholar: 'Rajesh Kumar', topic: 'Blockchain IoT Architectures', date: '2026-06-30', time: '02:30 PM', venue: 'Research Auditorium 1', status: 'Scheduled' }
+Line 110: { id: 1, scholar: 'Rajesh Kumar', title: 'Decentralized Consensus in IoT networks', forum: 'IEEE Infocom', year: '2025', status: 'Published' }
+Line 113: { id: 1, scholar: 'Rajesh Kumar', title: 'Blockchain architectures for IoT: A Survey', forum: 'ACM Computing Surveys', impactFactor: '14.3', year: '2026', status: 'Under Review' }
+Line 116: { id: 1, scholar: 'Rajesh Kumar', residency: true, coursework: true, seminar: true, plagiarism: false }
+Line 125: { id: 1, reqNo: 'REQ-INCH-0015', scholar: 'Rajesh Kumar', title: 'Blockchain Security in Smart Cities', date: '2026-08-15', time: '11:00 AM', venue: 'Research Block Panel Room 3', status: 'Submitted' }
+Line 148: { id: 2, scholar: 'Rajesh Kumar', panelStatus: 'Pending' }
+Line 165: { id: 2, scholar: 'Rajesh Kumar', panelStatus: 'Approved' }
+Line 178: { id: 2, scholar: 'Rajesh Kumar', docType: 'Synopsis Report',       submissionDate: '2026-05-28', status: 'Pending'   },
+Line 185: { id: 2, scholar: 'Rajesh Kumar', meetingType: 'Second DAC',     fileName: 'rajesh_dac2_mom.pdf',        uploadDate: '2026-05-30', status: 'Pending'  },
+Line 195: { id: 3, scholar: 'Arun Kumar', dept: 'Biomedical Engineering', task: 'VC Defense Signature Dispatch', status: 'Pending' }
+Line 198: { id: 1, scholar: 'Srinath V', school: 'School of Engineering', guide: 'Dr. A. R. Balaji', external: 'Dr. Suresh Kumar (NIT)', status: 'Pending Approval' }
+Line 216: { id: 101, scholar: 'Arun Kumar', guide: 'Dr. Kumar', topic: 'Optimization of Wind Turbine Blades', status: 'Pending School Approval' }
+Line 229: { id: 104, scholar: 'Naveen M', guide: 'Dr. Kumar', docType: 'Pre-Synopsis Thesis Draft', status: 'Pending Verification' }
+Line 250: 'Rajesh Kumar': [
+Line 271: 'Amit Kumar': [
+Line 292: 'Arun Kumar': [
+Line 312: 'Kishore Kumar': [
+Line 342: { id: 1, scholar: 'Rajesh Kumar', title: 'Blockchain for Decentralized Cloud IoT', journal: 'Springer Cloud', indexing: 'Scopus Verified', status: 'Awaiting Final Sanction' }
+Line 360: { id: 1, scholar: 'Rajesh Kumar', totalCredits: 16, status: 'Audit Passed' }
+Line 368: { id: 1, scholar: 'Arun Kumar', school: 'School of Computing', department: 'CSE', guide: 'Dr. Kumar', date: '15-Jun-2026', suggestedPanel: ['Dr. Amit Acharya (IIT Hyderabad)', 'Dr. John Miller (Waterloo)', 'Dr. V. Ramakrishnan (IISc)'], status: 'Pending VC Approval' },
+Line 375: { id: 1, scholar: 'Rajesh Kumar', school: 'School of Computing', department: 'CSE', guide: 'Dr. D. Srinivasan', date: '19-Jun-2026', evaluationSummary: 'All reports outstandingly recommend the thesis (Grade A). viva voca conducted.', status: 'Pending Defense Sign-off' },
+Line 466: 'Arun Kumar': 'CSE',
+Line 527: 'Dr. Kumar': { id: 'computing', name: 'School of Computing', dept: 'CSE' },
+Line 564: guide: item.guide || 'Dr. Kumar',
+Line 870: { name: 'Rajesh Kumar', stage: 'Synopsis',          progress: 50  },
+Line 905: { type: 'Colloquium',         scholar: 'Rajesh Kumar', date: '30 Jun 2026', time: '02:00 PM' },
+Line 931: { name: 'Rajesh Kumar', reg: 'DSU-PHD-2023-012', dept: 'Computer Science', topic: 'Blockchain for Decentralized Cloud IoT Architectures',         status: 'Active',      progress: 50, milestone: 'Synopsis',          pubs: 2, scopus: 2, patents: 0, pending: 'Publication Verification Pending', meeting: 'Colloquium',         meetDate: '30 Jun 2026' },
+Line 3456: {isCompleted ? 'Completed & Approved' : (s.name === 'Divya Menon' || s.name === 'Rajesh Kumar' ? 'Scheduled for review' : 'Pending Stage')}
+Line 3461: <p className="flex justify-between"><span>Presentation Date:</span> <span className="font-bold text-slate-900">{isCompleted ? '10 Jun 2026' : (s.name === 'Rajesh Kumar' ? '30 Jun 2026' : 'To be scheduled')}</span></p>
+Line 3487: {isCompleted ? 'Approved with Corrections' : (s.name === 'Rajesh Kumar' ? 'Under Review' : 'Pending')}
+Line 3518: {isCompleted ? 'Approved & Forwarded to External Examiners' : (s.name === 'Rajesh Kumar' ? 'Under Review' : 'Pending')}
+Line 3871: <option value="Rajesh Kumar">Rajesh Kumar — DSU-PHD-2023-012</option>
+Line 3976: <option value="Rajesh Kumar">Rajesh Kumar — DSU-PHD-2023-012</option>
+Line 4071: <option value="Rajesh Kumar">Rajesh Kumar</option>
+Line 4161: <option value="Rajesh Kumar">Rajesh Kumar</option>
+Line 4252: <option value="Rajesh Kumar">Rajesh Kumar</option>
+Line 4370: <option value="Rajesh Kumar">Rajesh Kumar</option>
+Line 4519: <option value="Rajesh Kumar">Rajesh Kumar</option>
+Line 5150: { name: 'Dr. Kumar', department: 'CSE', scholarsCount: 6, capacity: 8, vacancy: 2 },
+Line 5176: 'Dr. Kumar': [
+Line 5177: { name: 'Arun Kumar', approval: 'First DAC Approval' },
+Line 5192: { name: 'Rajesh Kumar', approval: 'None (All Cleared)' }
+Line 5195: { name: 'Amit Kumar', approval: 'None (All Cleared)' },
+Line 5208: { name: 'Amit Kumar (Mgt)', approval: 'None (All Cleared)' }
+Line 5220: { name: 'Arun Kumar (Agri)', approval: 'None (All Cleared)' }
+Line 5226: 'Arun Kumar': {
+Line 5854: { date: '18-Jul-2026', scholar: 'Rajesh Kumar', guide: 'Dr. D. Srinivasan', activity: 'Thesis Defense Oral Viva', status: 'Scheduled', dept: 'Computer Science & Engineering' }
+Line 6062: { name: 'Rajesh Kumar', topic: 'Blockchain for Decentralized Cloud IoT', status: 'Synopsis', year: '2023' },
+Line 6068: { name: 'Amit Kumar', topic: 'Deep Learning for Medical Diagnosis', status: 'Coursework', year: '2025' },
+Line 6075: { name: 'Arun Kumar', topic: 'Embedded Systems Optimization', status: 'Coursework', year: '2025' },
+Line 6084: { name: 'Kishore Kumar', topic: 'Hydroelectric Generator Control', status: 'Thesis Evaluation', year: '2022' },
+Line 7358: guide: item.guide || 'Dr. Kumar',
+--- Term: 'Examiner Panel' (Total 21) ---
+Line 194: { id: 2, scholar: 'Divya M', dept: 'Management Studies', task: 'Thesis Examiner Panel Approval', panel: '12 members', status: 'Pending' },
+Line 437: { id: 'syn-1', name: 'Synopsis Evaluation & Examiner Panel', type: 'detail', value: `Proposed External Panel:\nExaminer 1 (IIT Madras)\nExaminer 2 (IISc Bangalore)`, status: 'Pending', remarks: '' },
+Line 565: type: 'Examiner Panel Approval',
+Line 566: status: item.status === 'Pending VC Approval' ? 'Pending' : (item.status === 'Examiner Panel Signed' ? 'Approved' : 'Denied'),
+Line 3525: <p className="flex justify-between"><span>Examiner Panel:</span> <span className="font-bold text-emerald-600">{isCompleted ? 'Approved' : 'Pending'}</span></p>
+Line 3673: {/* Examiner Panel Status */}
+Line 3676: <h4 className="text-[10px] font-black text-slate-700 uppercase tracking-wider">Examiner Panel Status</h4>
+Line 4275: {/* ── Right column: Status Tracker + Examiner Panel stacked ── */}
+Line 4317: {/* ── Section 3: Examiner Panel Status ── */}
+Line 4320: <h3 className="text-xs font-black text-slate-700 uppercase tracking-wider">Examiner Panel Status</h3>
+Line 4435: {/* ── Section 3: Examiner Panel Status ── */}
+Line 4438: <h3 className="text-xs font-black text-slate-700 uppercase tracking-wider">Examiner Panel Status</h3>
+Line 5055: <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide border-b pb-2">Examiner Panel Approval</h3>
+Line 6141: { name: 'Examiner Panel', status: 'Verified' },
+Line 7359: type: 'Examiner Panel Approval',
+Line 7360: status: item.status === 'Pending VC Approval' ? 'Pending' : (item.status === 'Examiner Panel Signed' ? 'Approved' : 'Denied'),
+Line 7423: <StatCard title="Pending Examiner Panel Approvals" value={vcExaminers.filter(e => e.status === 'Pending VC Approval').length.toString()} />
+Line 7501: { id: 'examiner', label: 'Examiner Panel' },
+Line 7556: if (vcApprovalCategory === 'examiner' && item.type !== 'Examiner Panel Approval') return false
+Line 7651: {activeVcApproval.type === 'Examiner Panel Approval' && (
+Line 7707: setVcExaminers(prev => prev.map(x => x.id === activeVcApproval.original.id ? { ...x, status: 'Examiner Panel Signed' } : x))
+--- Term: 'VC' (Total 15) ---
+Line 195: { id: 3, scholar: 'Arun Kumar', dept: 'Biomedical Engineering', task: 'VC Defense Signature Dispatch', status: 'Pending' }
+Line 368: { id: 1, scholar: 'Arun Kumar', school: 'School of Computing', department: 'CSE', guide: 'Dr. Kumar', date: '15-Jun-2026', suggestedPanel: ['Dr. Amit Acharya (IIT Hyderabad)', 'Dr. John Miller (Waterloo)', 'Dr. V. Ramakrishnan (IISc)'], status: 'Pending VC Approval' },
+Line 369: { id: 2, scholar: 'Priya R', school: 'School of Computing', department: 'CSE', guide: 'Dr. D. Srinivasan', date: '16-Jun-2026', suggestedPanel: ['Dr. A. K. Singh (IIT M)', 'Dr. S. Sen (ISI)'], status: 'Pending VC Approval' },
+Line 370: { id: 3, scholar: 'Suresh M', school: 'School of Engineering', department: 'ECE', guide: 'Dr. Ravi', date: '16-Jun-2026', suggestedPanel: ['Dr. M. Roy (IISc)', 'Dr. J. Mukherjee (IIT KGP)'], status: 'Pending VC Approval' },
+Line 371: { id: 4, scholar: 'Kavitha P', school: 'School of Computing', department: 'CSE', guide: 'Dr. R. Venkataraman', date: '17-Jun-2026', suggestedPanel: ['Dr. H. Bose (IIT B)', 'Dr. P. Das (ISI)'], status: 'Pending VC Approval' },
+Line 372: { id: 5, scholar: 'Amit Sharma', school: 'School of Management', department: 'MBA', guide: 'Dr. Priya', date: '18-Jun-2026', suggestedPanel: ['Dr. R. Gopal (IIM B)', 'Dr. S. Nair (IIM C)'], status: 'Pending VC Approval' }
+Line 380: { id: 1, scholar: 'Dr. Arun Pranesh', school: 'School of Engineering', department: 'ECE', guide: 'Dr. Ravi', date: '21-Jun-2026', topic: 'Nano-fertilizers', status: 'Pending VC Degree Sanction' },
+Line 381: { id: 2, scholar: 'Deepa R', school: 'School of Management', department: 'MBA', guide: 'Dr. Priya', date: '22-Jun-2026', topic: 'Strategic Brand Alliances', status: 'Pending VC Degree Sanction' }
+Line 566: status: item.status === 'Pending VC Approval' ? 'Pending' : (item.status === 'Examiner Panel Signed' ? 'Approved' : 'Denied'),
+Line 594: status: item.status === 'Pending VC Degree Sanction' ? 'Pending' : (item.status === 'Approved' ? 'Approved' : 'Denied'),
+Line 3532: ? `"Synopsis approved and cleared for external evaluation. Examiner panel recommended and approved by VC."`
+Line 7360: status: item.status === 'Pending VC Approval' ? 'Pending' : (item.status === 'Examiner Panel Signed' ? 'Approved' : 'Denied'),
+Line 7390: status: item.status === 'Pending VC Degree Sanction' ? 'Pending' : (item.status === 'Approved' ? 'Approved' : 'Denied'),
+Line 7423: <StatCard title="Pending Examiner Panel Approvals" value={vcExaminers.filter(e => e.status === 'Pending VC Approval').length.toString()} />
+Line 7425: <StatCard title="Pending Final PhD Approvals" value={vcFinalDegrees.filter(d => d.status === 'Pending VC Degree Sanction').length.toString()} />
+--- Term: 'vc' (Total 24) ---
+Line 367: const [vcExaminers, setVcExaminers] = useState([
+Line 374: const [vcEvaluations, setVcEvaluations] = useState([
+Line 379: const [vcFinalDegrees, setVcFinalDegrees] = useState([
+Line 385: const [vcApprovalCategory, setVcApprovalCategory] = useState('all')
+Line 386: const [vcSearchQuery, setVcSearchQuery] = useState('')
+Line 387: const [vcUploadedDocs, setVcUploadedDocs] = useState({})
+Line 388: const [vcRemarksText, setVcRemarksText] = useState('')
+Line 553: } else if (role === 'vc') {
+Line 557: vcExaminers.forEach(item => {
+Line 571: vcEvaluations.forEach(item => {
+Line 585: vcFinalDegrees.forEach(item => {
+Line 7347: if (role === 'vc') {
+Line 7351: vcExaminers.forEach(item => {
+Line 7366: vcEvaluations.forEach(item => {
+Line 7381: vcFinalDegrees.forEach(item => {
+Line 7423: <StatCard title="Pending Examiner Panel Approvals" value={vcExaminers.filter(e => e.status === 'Pending VC Approval').length.toString()} />
+Line 7424: <StatCard title="Pending Thesis Evaluation Approvals" value={vcEvaluations.filter(e => e.status === 'Pending Defense Sign-off').length.toString()} />
+Line 7425: <StatCard title="Pending Final PhD Approvals" value={vcFinalDegrees.filter(d => d.status === 'Pending VC Degree Sanction').length.toString()} />
+Line 7509: vcApprovalCategory === tab.id
+Line 7527: value={vcSearchQuery}
+Line 7556: if (vcApprovalCategory === 'examiner' && item.type !== 'Examiner Panel Approval') return false
+Line 7557: if (vcApprovalCategory === 'thesis' && item.type !== 'Thesis Evaluation Approval') return false
+Line 7558: if (vcApprovalCategory === 'degree' && item.type !== 'Final PhD Approval') return false
+Line 7561: const q = vcSearchQuery.toLowerCase()
+--- Term: 'Final PhD' (Total 6) ---
+Line 593: type: 'Final PhD Approval',
+Line 7389: type: 'Final PhD Approval',
+Line 7425: <StatCard title="Pending Final PhD Approvals" value={vcFinalDegrees.filter(d => d.status === 'Pending VC Degree Sanction').length.toString()} />
+Line 7503: { id: 'degree', label: 'Final PhD' }
+Line 7558: if (vcApprovalCategory === 'degree' && item.type !== 'Final PhD Approval') return false
+Line 7671: {activeVcApproval.type === 'Final PhD Approval' && (
+--- Term: 'R. KUMAR' (Total 1) ---
+Line 7410: <div className="text-2xl font-black uppercase tracking-wider text-white">WELCOME, DR. R. KUMAR</div>

@@ -1,0 +1,70 @@
+281:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2022', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+282:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2022', documents: ['coursework_marksheet.pdf'] },
+283:       { phase: 'Comprehensive Viva', status: 'Approved', date: '05-Nov-2022', documents: ['viva_report.pdf'] },
+284:       { phase: 'Colloquium', status: 'Approved', date: '12-Apr-2023', documents: ['colloquium_minutes.pdf'] },
+285:       { phase: 'INCH Formatting', status: 'Approved', date: '18-Sep-2023', documents: ['formatting_clearance.pdf', 'plagiarism_report.pdf'] },
+286:       { phase: 'Synopsis', status: 'Approved', date: '12-Feb-2024', documents: ['synopsis_copy.pdf', 'examiner_panel.pdf'] },
+287:       { phase: 'Thesis Evaluation', status: 'Approved', date: '20-Sep-2024', documents: ['evaluator_reports.pdf', 'thesis_final.pdf'] }
+288:     ],
+289:     'Meera Das': [
+290:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2023', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+291:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2023', documents: ['coursework_marksheet.pdf'] }
+292:     ],
+293:     'Arun Kumar': [
+294:       { phase: 'First DAC', status: 'Approved', date: '18-Feb-2025', documents: ['dac_proposal.pdf', 'dac_members.pdf'] }
+295:     ],
+296:     'Preethi S': [],
+297:     'Ajay Dev': [
+298:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2023', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+299:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2023', documents: ['coursework_marksheet.pdf'] },
+300:       { phase: 'Comprehensive Viva', status: 'Approved', date: '05-Nov-2023', documents: ['viva_report.pdf'] }
+301:     ],
+302:     'Vikram Singh': [
+303:       { phase: 'First DAC', status: 'Approved', date: '18-Feb-2025', documents: ['dac_proposal.pdf', 'dac_members.pdf'] }
+304:     ],
+305:     'Kavitha P': [],
+306:     'Sanjay Dutt': [
+307:       { phase: 'First DAC', status: 'Approved', date: '18-Feb-2025', documents: ['dac_proposal.pdf', 'dac_members.pdf'] }
+308:     ],
+309:     'Rajesh Khanna': [
+310:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2023', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+311:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2023', documents: ['coursework_marksheet.pdf'] }
+312:     ],
+313:     'Kishore Kumar': [
+314:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2022', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+315:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2022', documents: ['coursework_marksheet.pdf'] },
+316:       { phase: 'Comprehensive Viva', status: 'Approved', date: '05-Nov-2022', documents: ['viva_report.pdf'] },
+317:       { phase: 'Colloquium', status: 'Approved', date: '12-Apr-2023', documents: ['colloquium_minutes.pdf'] },
+318:       { phase: 'INCH Formatting', status: 'Approved', date: '18-Sep-2023', documents: ['formatting_clearance.pdf', 'plagiarism_report.pdf'] },
+319:       { phase: 'Synopsis', status: 'Approved', date: '12-Feb-2024', documents: ['synopsis_copy.pdf', 'examiner_panel.pdf'] }
+320:     ],
+321:     'Asha Bhosle': [
+322:       { phase: 'First DAC', status: 'Approved', date: '18-Feb-2025', documents: ['dac_proposal.pdf', 'dac_members.pdf'] }
+323:     ],
+324:     'Lata Mangeshkar': [
+325:       { phase: 'First DAC', status: 'Approved', date: '10-Jan-2022', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+326:       { phase: 'Coursework', status: 'Approved', date: '15-Jun-2022', documents: ['coursework_marksheet.pdf'] },
+327:       { phase: 'Comprehensive Viva', status: 'Approved', date: '05-Nov-2022', documents: ['viva_report.pdf'] },
+328:       { phase: 'Colloquium', status: 'Approved', date: '12-Apr-2023', documents: ['colloquium_minutes.pdf'] },
+329:       { phase: 'INCH Formatting', status: 'Approved', date: '18-Sep-2023', documents: ['formatting_clearance.pdf', 'plagiarism_report.pdf'] },
+330:       { phase: 'Synopsis', status: 'Approved', date: '12-Feb-2024', documents: ['synopsis_copy.pdf', 'examiner_panel.pdf'] },
+331:       { phase: 'Thesis Evaluation', status: 'Approved', date: '20-Sep-2024', documents: ['evaluator_reports.pdf', 'thesis_final.pdf'] }
+332:     ]
+333:   })
+334: 
+335:   // 5. Research Office (R&I) State
+336:   const [retApplications, setRetApplications] = useState([
+337:     { id: 1, applicant: 'Vigneshwaran M', email: 'vicky@gmail.com', retScore: 82, interviewScore: 18, total: 100, status: 'Pending Document Audit' }
+338:   ])
+339:   const [originalDocs, setOriginalDocs] = useState([
+340:     { id: 1, scholar: 'Aishwarya S', documents: ['PG Degree', 'UG Consolidated Marksheet', 'Community Certificate'], status: 'Awaiting Audit' }
+341:   ])
+342:   const [riPublications, setRiPublications] = useState([
+343:     { id: 1, scholar: 'Rajesh Kumar', title: 'Blockchain for Decentralized Cloud IoT', journal: 'Springer Cloud', indexing: 'Scopus Verified', status: 'Awaiting Final Sanction' }
+344:   ])
+345:   const [riPlagiarism, setRiPlagiarism] = useState([
+346:     { id: 1, scholar: 'Priya R', title: 'Secure AI Smart Healthcare', similarity: '7%', status: 'Pending Format Audit' }
+347:   ])
+348:   const [thesisDispatches, setThesisDispatches] = useState([
+349:     { id: 1, scholar: 'Preethi S', dispatchDate: '2026-06-10', trackerNo: 'DSU-EMS-10294', examiner: 'Indian Examiner A (NIT Calicut)', status: 'In Transit' },
+350:     { id: 2, scholar: 'Preethi S', dispatchDate: '2026-06-11', trackerNo: 'DSU-EMS-10295', examiner: 'Foreign Examiner B (NUS, Singapore)', status: 'Delivered' }

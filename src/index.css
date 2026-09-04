@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --dsu-maroon: #7B1E3A;
+  --dsu-gold: #D4AF37;
+  --bg: #F8F9FA;
+}
+
+body { @apply bg-pagebg text-slate-900 antialiased; }
+
+/* simple container utility */
+.container { @apply mx-auto px-4 sm:px-6 lg:px-8; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes text-flash {
+  0%, 100% { color: #ffffff; }
+  50% { color: #93c5fd; }
+}
+
+.animate-text-flash {
+  animation: text-flash 1.5s linear infinite;
+}

@@ -1,0 +1,55 @@
+1006:             const phase = activeSupervisorPhase
+1007: 
+1008:             // Form handler wrappers so forms update list states locally
+1009:             const onConstituteDac = (e) => {
+1010:               e.preventDefault()
+1011:               const formData = new FormData(e.target)
+1012:               const newDac = {
+1013:                 id: dacPanels.length + 1,
+1014:                 scholar: s.name,
+1015:                 internal: formData.get('internal'),
+1016:                 external: formData.get('external'),
+1017:                 date: formData.get('date'),
+1018:                 status: 'Pending Dean Approval'
+1019:               }
+1020:               setDacPanels([newDac, ...dacPanels])
+1021:               e.target.reset()
+1022:               alert('DAC Committee constituted successfully and submitted for Dean approval!')
+1023:             }
+1024: 
+1025:             const onAllocateCourse = (e) => {
+1026:               e.preventDefault()
+1027:               const formData = new FormData(e.target)
+1028:               const newAlloc = {
+1029:                 id: courseworkAllocations.length + 1,
+1030:                 scholar: s.name,
+1031:                 course: formData.get('course'),
+1032:                 credits: parseInt(formData.get('credits') || '4'),
+1033:                 type: formData.get('type'),
+1034:                 status: 'Approved'
+1035:               }
+1036:               setCourseworkAllocations([newAlloc, ...courseworkAllocations])
+1037:               e.target.reset()
+1038:               alert('Course successfully allocated to scholar!')
+1039:             }
+1040: 
+1041:             const onRequestViva = (e) => {
+1042:               e.preventDefault()
+1043:               const formData = new FormData(e.target)
+1044:               const newRequest = {
+1045:                 id: vivaRequests.length + 1,
+1046:                 scholar: s.name,
+1047:                 date: formData.get('date'),
+1048:                 external: formData.get('external'),
+1049:                 status: 'Pending Approval'
+1050:               }
+1051:               setVivaRequests([newRequest, ...vivaRequests])
+1052:               e.target.reset()
+1053:               alert('Comprehensive Viva request filed successfully!')
+1054:             }
+1055: 
+1056:             const onScheduleColloquium = (e) => {
+1057:               e.preventDefault()
+1058:               const formData = new FormData(e.target)
+1059:               const newColl = {
+1060:                 id: colloquiumSchedules.length + 1,

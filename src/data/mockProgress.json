@@ -1,0 +1,14 @@
+[
+  { "month": "Jan", "progress": 5 },
+  { "month": "Feb", "progress": 12 },
+  { "month": "Mar", "progress": 22 },
+  { "month": "Apr", "progress": 35 },
+  { "month": "May", "progress": 48 },
+  { "month": "Jun", "progress": 58 },
+  { "month": "Jul", "progress": 66 },
+  { "month": "Aug", "progress": 74 },
+  { "month": "Sep", "progress": 82 },
+  { "month": "Oct", "progress": 90 },
+  { "month": "Nov", "progress": 94 },
+  { "month": "Dec", "progress": 100 }
+]

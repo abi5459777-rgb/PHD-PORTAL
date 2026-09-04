@@ -1,0 +1,170 @@
+6681: 
+6682:           // ── Sub-view 2: Guide Details Page ──
+6683:           if (activeDeanGuide) {
+6684:             return (
+6685:               <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6 animate-in fade-in duration-150">
+6686:                 {/* Back Button & Header */}
+6687:                 <div className="flex items-center gap-4">
+6688:                   <button
+6689:                     onClick={() => setActiveDeanGuide(null)}
+6690:                     className="p-2 border border-slate-200 rounded-xl hover:bg-slate-50 transition text-slate-600 hover:text-slate-900"
+6691:                   >
+6692:                     <ArrowLeft className="h-4 w-4" />
+6693:                   </button>
+6694:                   <div>
+6695:                     <h3 className="font-extrabold text-base text-slate-800 uppercase tracking-wide">Guide Details</h3>
+6696:                     <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Dean of School View</p>
+6697:                   </div>
+6698:                 </div>
+6699: 
+6700:                 {/* Guide Info Card */}
+6701:                 <div className="bg-slate-50 rounded-xl p-5 border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+6702:                   <div className="flex items-center gap-4">
+6703:                     <div className="w-12 h-12 rounded-2xl bg-dsu-maroon/10 text-dsu-maroon flex items-center justify-center font-black text-lg">
+6704:                       {activeDeanGuide.name.replace('Dr. ', '').charAt(0)}
+6705:                     </div>
+6706:                     <div>
+6707:                       <h4 className="font-black text-base text-slate-800">{activeDeanGuide.name}</h4>
+6708:                       <p className="text-xs text-slate-500 font-bold mt-0.5">{activeDeanGuide.designation} • {activeDeanGuide.department}</p>
+6709:                     </div>
+6710:                   </div>
+6711: 
+6712:                   <div className="grid grid-cols-2 gap-4">
+6713:                     <div className="bg-white p-3 rounded-lg border border-slate-200/60 shadow-sm text-center">
+6714:                       <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Assigned Scholars</div>
+6715:                       <div className="text-xl font-extrabold text-[#7B1E3A] mt-0.5">{activeDeanGuide.currentScholars} / {activeDeanGuide.maxLimit}</div>
+6716:                     </div>
+6717:                     <div className="bg-white p-3 rounded-lg border border-slate-200/60 shadow-sm text-center">
+6718:                       <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Vacancy</div>
+6719:                       <div className="text-xl font-extrabold text-emerald-600 mt-0.5">{activeDeanGuide.maxLimit - activeDeanGuide.currentScholars} Slots</div>
+6720:                     </div>
+6721:                   </div>
+6722:                 </div>
+6723: 
+6724:                 {/* Assigned Scholars List Table */}
+6725:                 <div className="space-y-4">
+6726:                   <h4 className="font-extrabold text-xs text-slate-700 uppercase tracking-wider">Assigned Scholars Registry</h4>
+6727:                   <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+6728:                     <table className="min-w-full text-left text-xs text-slate-700">
+6729:                       <thead className="bg-[#001c4f] text-white uppercase text-[10px] font-bold tracking-wider">
+6730:                         <tr>
+6731:                           <th className="p-4">Scholar Name</th>
+6732:                           <th className="p-4">Research Topic</th>
+6733:                           <th className="p-4">Current Phase / Status</th>
+6734:                           <th className="p-4 text-right">Admission Year</th>
+6735:                         </tr>
+6736:                       </thead>
+6737:                       <tbody className="divide-y divide-slate-100 font-semibold">
+6738:                         {(mockGuideScholars[activeDeanGuide.id] || []).length === 0 ? (
+6739:                           <tr>
+6740:                             <td colSpan="4" className="p-8 text-center text-slate-400 font-semibold">
+6741:                               No scholars assigned to this guide.
+6742:                             </td>
+6743:                           </tr>
+6744:                         ) : (
+6745:                           (mockGuideScholars[activeDeanGuide.id] || []).map((scholar, sIdx) => (
+6746:                             <tr key={sIdx} className="hover:bg-slate-50/40 transition">
+6747:                               <td className="p-4">
+6748:                                 <button
+6749:                                   onClick={() => {
+6750:                                     if (!deanVerifyItems[scholar.name]) {
+6751:                                       const initialItems = getInitialVerificationItems(scholar.name, scholar.status, activeDeanGuide.name)
+6752:                                       setDeanVerifyItems(prev => ({
+6753:                                         ...prev,
+6754:                                         [scholar.name]: initialItems
+6755:                                       }))
+6756:                                     }
+6757:                                     setActiveDeanVerifyScholar(scholar)
+6758:                                   }}
+6759:                                   className="font-bold text-slate-900 hover:text-[#7B1E3A] hover:underline focus:outline-none text-left"
+6760:                                 >
+6761:                                   {scholar.name}
+6762:                                 </button>
+6763:                               </td>
+6764:                               <td className="p-4 text-slate-500 font-medium">{scholar.topic}</td>
+6765:                               <td className="p-4">
+6766:                                 <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#7B1E3A]/5 text-[#7B1E3A] border border-[#7B1E3A]/10">
+6767:                                   {scholar.status}
+6768:                                 </span>
+6769:                               </td>
+6770:                               <td className="p-4 text-right text-slate-500">{scholar.year}</td>
+6771:                             </tr>
+6772:                           ))
+6773:                         )}
+6774:                       </tbody>
+6775:                     </table>
+6776:                   </div>
+6777:                 </div>
+6778:               </div>
+6779:             )
+6780:           }
+6781: 
+6782:           // ── Sub-view 1: Guides List Directory ──
+6783:           return (
+6784:             <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-6 animate-in fade-in duration-150">
+6785:               {/* Header & Search Bar */}
+6786:               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+6787:                 <div>
+6788:                   <h3 className="font-extrabold text-sm text-slate-800 uppercase tracking-wide">Guides Directory</h3>
+6789:                   <p className="text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Capacity & Workload Overview</p>
+6790:                 </div>
+6791: 
+6792:                 <div className="relative w-full sm:w-64">
+6793:                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+6794:                     <Search className="h-4 w-4" />
+6795:                   </span>
+6796:                   <input
+6797:                     type="text"
+6798:                     value={guideSearchQuery}
+6799:                     onChange={(e) => setGuideSearchQuery(e.target.value)}
+6800:                     placeholder="Search guide name or dept..."
+6801:                     className="w-full text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 pl-10 pr-4 py-2.5 text-slate-800 outline-none focus:border-[#7B1E3A] focus:bg-white transition"
+6802:                   />
+6803:                 </div>
+6804:               </div>
+6805: 
+6806:               {/* Guides List Table */}
+6807:               <div className="overflow-x-auto rounded-xl border border-slate-200/80 shadow-sm">
+6808:                 <table className="min-w-full text-left text-xs text-slate-700">
+6809:                   <thead className="bg-[#001c4f] text-white uppercase text-[10px] font-bold tracking-wider">
+6810:                     <tr>
+6811:                       <th className="p-4">Guide Name</th>
+6812:                       <th className="p-4">Specialization</th>
+6813:                       <th className="p-4">Official Email</th>
+6814:                       <th className="p-4">Current Ph.D. Scholars</th>
+6815:                       <th className="p-4 text-right">Available Vacancies</th>
+6816:                     </tr>
+6817:                   </thead>
+6818:                   <tbody className="divide-y divide-slate-100 font-semibold">
+6819:                     {filteredGuides.length === 0 ? (
+6820:                       <tr>
+6821:                         <td colSpan="5" className="p-8 text-center text-slate-400 font-semibold">
+6822:                           No matching guides found.
+6823:                         </td>
+6824:                       </tr>
+6825:                     ) : (
+6826:                       filteredGuides.map((guide, idx) => {
+6827:                         const vacancy = guide.maxLimit - guide.currentScholars
+6828:                         return (
+6829:                           <tr key={idx} className="hover:bg-slate-50/50 transition">
+6830:                             <td className="p-4">
+6831:                               <button
+6832:                                 onClick={() => setActiveDeanGuide(guide)}
+6833:                                 className="font-extrabold text-[#7B1E3A] hover:underline focus:outline-none text-left"
+6834:                               >
+6835:                                 {guide.name}
+6836:                               </button>
+6837:                             </td>
+6838:                             <td className="p-4 text-slate-500 font-bold whitespace-normal">
+6839:                               {guide.specialization || 'Computer Science & Engineering'}
+6840:                             </td>
+6841:                             <td className="p-4 text-slate-600 font-normal break-all whitespace-normal">
+6842:                               {guide.email || 'faculty@dsuniversity.ac.in'}
+6843:                             </td>
+6844:                             <td className="p-4 font-bold text-slate-800">{guide.currentScholars}</td>
+6845:                             <td className="p-4 text-right">
+6846:                               <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+6847:                                 vacancy > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' : 'bg-red-50 text-red-700 border border-red-100'
+6848:                               }`}>
+6849:                                 {vacancy > 0 ? (vacancy === 1 ? '1 Vacancy' : `${vacancy} Vacancies`) : 'Full'}
+6850:                               </span>

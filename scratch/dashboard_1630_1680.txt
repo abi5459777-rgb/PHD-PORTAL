@@ -1,0 +1,50 @@
+1631:                           <div className="divide-y divide-slate-100 flex-1 overflow-y-auto max-h-[300px] text-xs font-semibold text-slate-700">
+1632:                             {uploadedMoms.filter(m => m.scholar === s.name && (m.type.includes('First DAC') || m.type.toLowerCase().includes('first dac'))).length === 0 ? (
+1633:                               <p className="p-8 text-center text-slate-400 italic text-xs font-semibold">No Minutes of Meeting uploaded yet.</p>
+1634:                             ) : (
+1635:                               uploadedMoms.filter(m => m.scholar === s.name && (m.type.includes('First DAC') || m.type.toLowerCase().includes('first dac'))).map((m, idx) => (
+1636:                                 <div key={idx} className="p-3 hover:bg-slate-50/50 transition flex justify-between items-center gap-3">
+1637:                                   <div className="min-w-0">
+1638:                                     <p className="font-extrabold text-slate-900 truncate" title={m.fileName}>{m.fileName}</p>
+1639:                                     <p className="text-[10px] text-slate-400 font-semibold mt-1">Uploaded Date: {m.date}</p>
+1640:                                   </div>
+1641:                                   <span className="text-[9px] font-black px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-100 uppercase shrink-0">
+1642:                                     {m.status}
+1643:                                   </span>
+1644:                                 </div>
+1645:                               ))
+1646:                             )}
+1647:                           </div>
+1648:                         </div>
+1649:                       </div>
+1650:                     </div>
+1651:                   )}
+1652:                 </div>
+1653:               )
+1654:             }
+1655: 
+1656:             const renderComprehensiveVivaSupervisorWorkspace = (s) => {
+1657:               const tabClass = (tab) => `flex-1 py-2 text-center text-[11px] font-black uppercase tracking-wider border-b-2 transition duration-150 ${vivaTab === tab ? 'border-dsu-maroon text-dsu-maroon' : 'border-transparent text-slate-400 hover:text-slate-600'}`
+1658: 
+1659:               const onAddVivaRequest = (e) => {
+1660:                 e.preventDefault()
+1661:                 const formData = new FormData(e.target)
+1662:                 const newReq = {
+1663:                   id: vivaRequests.length + 1,
+1664:                   reqNo: formData.get('reqNo'),
+1665:                   scholar: s.name,
+1666:                   date: formData.get('date'),
+1667:                   time: formData.get('time'),
+1668:                   venue: formData.get('venue'),
+1669:                   external: formData.get('external'),
+1670:                   status: 'Pending Approval'
+1671:                 }
+1672:                 setVivaRequests([newReq, ...vivaRequests])
+1673:                 e.target.reset()
+1674:                 alert('Comprehensive Viva Exam requested successfully!')
+1675:               }
+1676: 
+1677:               const onUploadSyllabus = (e) => {
+1678:                 e.preventDefault()
+1679:                 const formData = new FormData(e.target)
+1680:                 const file = formData.get('syllabusFile')

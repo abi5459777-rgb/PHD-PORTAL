@@ -1,0 +1,25 @@
+441: 
+442:   useEffect(() => {
+443:     localStorage.setItem('dsu_vc_evaluations', JSON.stringify(vcEvaluations))
+444:   }, [vcEvaluations])
+445: 
+446:   useEffect(() => {
+447:     localStorage.setItem('dsu_vc_final_degrees', JSON.stringify(vcFinalDegrees))
+448:   }, [vcFinalDegrees])
+449: 
+450:   const [activeVcApproval, setActiveVcApproval] = useState(null)
+451:   const [vcApprovalCategory, setVcApprovalCategory] = useState('all')
+452:   const [vcSearchQuery, setVcSearchQuery] = useState('')
+453:   const [vcUploadedDocs, setVcUploadedDocs] = useState({})
+454:   const [vcRemarksText, setVcRemarksText] = useState('')
+455: 
+456:   // ──── NOTIFICATION DATABASES ────
+457:   const defaultNotifications = [
+458:     { time: '10 mins ago', message: 'New credit allocation rules for MOOC courses updated.', type: 'info' },
+459:     { time: '2 hours ago', message: 'First DAC schedule submission window closes on 30th June.', type: 'warning' },
+460:     { time: '1 day ago', message: 'Dean Research released the Scopus publication audit criteria.', type: 'info' }
+461:   ]
+462: 
+463:   const getInitialVerificationItems = (scholarName, status, guideName) => {
+464:     switch (status) {
+465:       case 'First DAC':

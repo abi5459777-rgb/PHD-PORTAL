@@ -1,0 +1,5 @@
+[
+  { "id": "a1", "title": "DAC Meeting - Q3", "date": "2026-06-20", "type": "DAC" },
+  { "id": "a2", "title": "Comprehensive Viva", "date": "2026-07-10", "type": "Viva" },
+  { "id": "a3", "title": "Colloquium Presentation", "date": "2026-08-05", "type": "Colloquium" }
+]

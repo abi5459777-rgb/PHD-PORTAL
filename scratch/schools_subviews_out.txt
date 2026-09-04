@@ -1,0 +1,240 @@
+5321:                 date: '24-Jun-2026',
+5322:                 docs: ['synopsis_draft.pdf', 'examiner_panel.pdf']
+5323:               }
+5324:             },
+5325:             'Meera S': {
+5326:               history: [
+5327:                 { phase: 'First DAC', status: 'Approved', date: '20-Dec-2025', docs: ['dac_report.pdf'] },
+5328:                 { phase: 'Comprehensive Viva', status: 'Approved', date: '10-Mar-2026', docs: ['viva_mom.pdf'] },
+5329:                 { phase: 'Colloquium', status: 'Approved', date: '25-Apr-2026', docs: ['colloquium_mom.pdf'] },
+5330:                 { phase: 'Inch Committee', status: 'Approved', date: '18-May-2026', docs: ['inch_certificate.pdf'] },
+5331:                 { phase: 'Synopsis', status: 'Approved', date: '12-Jun-2026', docs: ['synopsis_approval.pdf'] }
+5332:               ],
+5333:               pending: {
+5334:                 phase: 'Thesis Defense',
+5335:                 approval: 'Thesis Defense Approval',
+5336:                 date: '26-Jun-2026',
+5337:                 docs: ['defense_request.pdf', 'final_thesis.pdf']
+5338:               }
+5339:             }
+5340:           }
+5341: 
+5342:           const getScholarVerificationData = (scholarName) => {
+5343:             if (scholarDetailsDb[scholarName]) {
+5344:               return scholarDetailsDb[scholarName]
+5345:             }
+5346:             return {
+5347:               history: [
+5348:                 { phase: 'First DAC', status: 'Approved', date: '12-Feb-2026', docs: ['dac_report.pdf', 'mom_dac.pdf'] },
+5349:                 { phase: 'Coursework', status: 'Approved', date: '18-May-2026', docs: ['grade_card.pdf'] }
+5350:               ],
+5351:               pending: {
+5352:                 phase: 'Comprehensive Viva',
+5353:                 approval: 'Comprehensive Viva Approval',
+5354:                 date: '19-Jun-2026',
+5355:                 docs: ['cv_syllabus.pdf', 'recommendation_letter.pdf', 'cv_mom.pdf']
+5356:               }
+5357:             }
+5358:           }
+5359: 
+5360:           const handleVerifyAction = (scholarName, outcome, remarks = '') => {
+5361:             // Remove from dean notifications if it exists
+5362:             const savedNotifs = localStorage.getItem('dsu_dean_notifications')
+5363:             if (savedNotifs) {
+5364:               try {
+5365:                 const parsed = JSON.parse(savedNotifs)
+5366:                 const updated = parsed.filter(n => n.scholar !== scholarName)
+5367:                 localStorage.setItem('dsu_dean_notifications', JSON.stringify(updated))
+5368:                 // Dispatch event to sync Topbar badge count
+5369:                 window.dispatchEvent(new Event('notifications_updated'))
+5370:               } catch (e) {}
+5371:             }
+5372:             
+5373:             alert(`Scholar ${scholarName} request has been successfully ${outcome}!`)
+5374:             // Return to Guide details page
+5375:             setActiveDeanVerifyScholar(null)
+5376:           }
+5377: 
+5378:           // ──── Sub-view 4: Scholar Verification Page ────
+5379:           if (activeDeanVerifyScholar) {
+5380:             const sName = typeof activeDeanVerifyScholar === 'string' ? activeDeanVerifyScholar : activeDeanVerifyScholar.name
+5381:             const sData = getScholarVerificationData(sName)
+5382:             
+5383:             return (
+5384:               <div className="space-y-6 animate-in fade-in duration-150 text-xs">
+5385:                 {/* Header with back navigation */}
+5386:                 <div className="flex items-center justify-between border-b pb-3">
+5387:                   <button 
+5388:                     onClick={() => setActiveDeanVerifyScholar(null)}
+5389:                     className="flex items-center gap-1.5 font-bold text-dsu-maroon hover:text-red-800 transition uppercase tracking-wider text-[10px]"
+5390:                   >
+5391:                     <ArrowLeft className="h-4 w-4" />
+5392:                     Back to Guide Details
+5393:                   </button>
+5394:                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Scholar Verification Desk</span>
+5395:                 </div>
+5396: 
+5397:                 <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
+5398:                   <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide border-b pb-2">
+5399:                     Scholar Profile: <span className="text-dsu-maroon">{sName}</span>
+5400:                   </h3>
+5401:                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+5402:                     <div>
+5403:                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Supervising Guide</span>
+5404:                       <span className="text-slate-900 font-bold text-sm">{activeDeanGuide?.name || 'N/A'}</span>
+5405:                     </div>
+5406:                     <div>
+5407:                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">School Name</span>
+5408:                       <span className="text-slate-900 font-bold text-sm">{activeDeanSchool?.name || 'N/A'}</span>
+5409:                     </div>
+5410:                     <div>
+5411:                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Department</span>
+5412:                       <span className="text-slate-900 font-bold text-sm">{activeDeanGuide?.department || 'N/A'}</span>
+5413:                     </div>
+5414:                   </div>
+5415:                 </div>
+5416: 
+5417:                 {/* Part A: Complete Approval History */}
+5418:                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+5419:                   <div>
+5420:                     <h3 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">Complete Approval History</h3>
+5421:                     <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Timeline of previously cleared research milestones</p>
+5422:                   </div>
+5423: 
+5424:                   <div className="relative border-l border-slate-200 pl-5 ml-2.5 space-y-5 py-2">
+5425:                     {sData.history.map((h, index) => (
+5426:                       <div key={index} className="relative">
+5427:                         {/* Timeline dot */}
+5428:                         <span className="absolute -left-[27px] top-1.5 flex h-3 w-3 items-center justify-center rounded-full bg-emerald-500 ring-4 ring-emerald-50"></span>
+5429:                         
+5430:                         <div className="bg-slate-50 border border-slate-200/60 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3 hover:bg-slate-100/50 transition">
+5431:                           <div>
+5432:                             <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Phase</span>
+5433:                             <h4 className="font-extrabold text-slate-800 text-xs mt-0.5">{h.phase}</h4>
+5434:                             <div className="flex items-center gap-4 mt-2">
+5435:                               <div>
+5436:                                 <span className="text-[9px] text-slate-400 block uppercase font-bold">Approved Date</span>
+5437:                                 <span className="font-bold text-slate-700">{h.date}</span>
+5438:                               </div>
+5439:                               <div>
+5440:                                 <span className="text-[9px] text-slate-400 block uppercase font-bold">Status</span>
+5441:                                 <span className="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wide">
+5442:                                   {h.status}
+5443:                                 </span>
+5444:                               </div>
+5445:                             </div>
+5446:                           </div>
+5447:                           
+5448:                           <div className="flex flex-col gap-1.5">
+5449:                             <span className="text-[9px] text-slate-400 uppercase font-bold">Submitted Documents</span>
+5450:                             <div className="flex flex-wrap gap-1.5">
+5451:                               {h.docs.map((doc, dIdx) => (
+5452:                                 <button 
+5453:                                   key={dIdx}
+5454:                                   onClick={() => alert(`Downloading archived document: ${doc}`)}
+5455:                                   className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition text-[10px] text-slate-600 font-bold"
+5456:                                 >
+5457:                                   <Download className="h-3.5 w-3.5 text-dsu-maroon" />
+5458:                                   {doc}
+5459:                                 </button>
+5460:                               ))}
+5461:                             </div>
+5462:                           </div>
+5463:                         </div>
+5464:                       </div>
+5465:                     ))}
+5466:                   </div>
+5467:                 </div>
+5468: 
+5469:                 {/* Part B: Pending Approval Request */}
+5470:                 <div className="bg-white rounded-2xl border border-[#7B1E3A]/20 shadow-sm p-5 space-y-4">
+5471:                   <div className="border-b border-slate-100 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+5472:                     <div>
+5473:                       <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-1.5">
+5474:                         <span className="h-2 w-2 rounded-full bg-amber-500 animate-ping"></span>
+5475:                         Current Pending Approval Request
+5476:                       </h3>
+5477:                       <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Verification details submitted for Dean of Research clearance</p>
+5478:                     </div>
+5479:                     <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-amber-50 text-amber-800 border border-amber-200/60 uppercase tracking-wider self-start sm:self-center">
+5480:                       Awaiting Dean Clearance
+5481:                     </span>
+5482:                   </div>
+5483: 
+5484:                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 border border-slate-200 rounded-xl p-4">
+5485:                     <div className="space-y-2">
+5486:                       <div>
+5487:                         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Event / Stage</span>
+5488:                         <span className="text-slate-900 font-extrabold text-sm">{sData.pending.phase}</span>
+5489:                       </div>
+5490:                       <div>
+5491:                         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Approval Required</span>
+5492:                         <span className="text-dsu-maroon font-bold text-sm">{sData.pending.approval}</span>
+5493:                       </div>
+5494:                       <div>
+5495:                         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Submission Date</span>
+5496:                         <span className="text-slate-700 font-bold">{sData.pending.date}</span>
+5497:                       </div>
+5498:                     </div>
+5499: 
+5500:                     <div className="space-y-3">
+5501:                       <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block leading-none">Verification Documents</span>
+5502:                       <div className="grid gap-2">
+5503:                         {sData.pending.docs.map((doc, dIdx) => (
+5504:                           <div key={dIdx} className="flex items-center justify-between bg-white border border-slate-200/60 rounded-xl p-3 shadow-xs hover:border-slate-300 transition">
+5505:                             <span className="font-bold text-slate-700">{doc}</span>
+5506:                             <button
+5507:                               onClick={() => alert(`Downloading pending document for review: ${doc}`)}
+5508:                               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#7B1E3A]/5 hover:bg-[#7B1E3A]/10 text-dsu-maroon rounded-lg transition font-bold text-[10px] uppercase tracking-wider"
+5509:                             >
+5510:                               <Download className="h-3.5 w-3.5" />
+5511:                               Download
+5512:                             </button>
+5513:                           </div>
+5514:                         ))}
+5515:                       </div>
+5516:                     </div>
+5517:                   </div>
+5518: 
+5519:                   {/* Actions Panel */}
+5520:                   <div className="flex items-center justify-end gap-3 pt-2">
+5521:                     <button
+5522:                       onClick={() => {
+5523:                         const remarks = prompt("Please enter denial remarks / feedback for the guide:")
+5524:                         if (remarks !== null) {
+5525:                           handleVerifyAction(sName, 'Denied', remarks)
+5526:                         }
+5527:                       }}
+5528:                       className="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold uppercase tracking-wider transition shadow-sm flex items-center gap-1.5"
+5529:                     >
+5530:                       <X className="h-4 w-4" />
+5531:                       Deny Request
+5532:                     </button>
+5533:                     <button
+5534:                       onClick={() => handleVerifyAction(sName, 'Approved')}
+5535:                       className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold uppercase tracking-wider transition shadow-sm flex items-center gap-1.5"
+5536:                     >
+5537:                       <Check className="h-4 w-4" />
+5538:                       Approve Request
+5539:                     </button>
+5540:                   </div>
+5541:                 </div>
+5542:               </div>
+5543:             )
+5544:           }
+5545: 
+5546:           // ──── Sub-view 3: Guide Details Page ────
+5547:           if (activeDeanGuide) {
+5548:             const gScholars = scholarsByGuide[activeDeanGuide.name] || []
+5549:             
+5550:             return (
+5551:               <div className="space-y-6 animate-in fade-in duration-150 text-xs">
+5552:                 {/* Header with back navigation */}
+5553:                 <div className="flex items-center justify-between border-b pb-3">
+5554:                   <button 
+5555:                     onClick={() => setActiveDeanGuide(null)}
+5556:                     className="flex items-center gap-1.5 font-bold text-dsu-maroon hover:text-red-800 transition uppercase tracking-wider text-[10px]"
+5557:                   >
+5558:                     <ArrowLeft className="h-4 w-4" />
+5559:                     Back to Guides Directory
+5560:                   </button>

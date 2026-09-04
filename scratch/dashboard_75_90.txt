@@ -1,0 +1,15 @@
+76:     { id: 1, scholar: 'Aishwarya S', internal: 'Dr. R. Venkataraman', external: 'Dr. M. Sathyapriya (NIT Trichy)', date: '2026-06-25', status: 'Approved' }
+77:   ])
+78:   const [courseworkAllocations, setCourseworkAllocations] = useState([
+79:     { id: 1, scholar: 'Priya R', course: 'Advanced Machine Learning', credits: 4, type: 'Core', code: 'AM-CS-101', status: 'Approved' },
+80:     { id: 2, scholar: 'Rajesh Kumar', course: 'Research Methodology', credits: 4, type: 'Core', code: 'RM-CS-102', status: 'Approved' }
+81:   ])
+82:   const [dacMeetings, setDacMeetings] = useState([
+83:     { id: 1, reqNo: 'REQ-DAC1-0024', scholar: 'Aishwarya S', date: '2026-06-25', time: '10:30 AM', venue: 'Research Block Seminar Hall 1', status: 'Submitted' }
+84:   ])
+85:   const [proposedDacMembers, setProposedDacMembers] = useState([])
+86:   const [firstDacTab, setFirstDacTab] = useState('coursework')
+87:   const [vivaRequests, setVivaRequests] = useState([
+88:     { id: 1, reqNo: 'REQ-VIVA-0012', scholar: 'Rajesh Kumar', date: '2026-07-10', time: '11:00 AM', venue: 'Research Cell Auditorium 2', external: 'Dr. G. Loganathan (IIT Madras)', status: 'Pending Approval' }
+89:   ])
+90:   const [vivaTab, setVivaTab] = useState('request')

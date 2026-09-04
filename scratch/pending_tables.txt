@@ -1,0 +1,40 @@
+211:     { id: 1, scholar: 'Narayanan R', school: 'School of Pharmacy', report1: 'Acceptable', report2: 'Minor Revisions', status: 'Awaiting Viva Permission' }
+212:   ])
+213: 
+214:   // 4. Dean of School State
+215:   const [schoolDacs, setSchoolDacs] = useState([
+216:     { id: 1, scholar: 'Kamalesh N', guide: 'Dr. S. K. Gupta', topic: 'Aerodynamic Modeling', status: 'Pending School Approval' },
+217:     { id: 101, scholar: 'Arun Kumar', guide: 'Dr. Kumar', topic: 'Optimization of Wind Turbine Blades', status: 'Pending School Approval' }
+218:   ])
+219:   const [schoolVivas, setSchoolVivas] = useState([
+220:     { id: 1, scholar: 'Meera Das', guide: 'Dr. H. Subramanian', date: '2026-06-26', status: 'Pending School Approval' },
+221:     { id: 102, scholar: 'Karthik S', guide: 'Dr. Priya', date: '2026-06-26', status: 'Pending School Approval' },
+222:     { id: 106, scholar: 'Harini K', guide: 'Dr. Ravi', date: '2026-07-02', status: 'Pending School Approval' }
+223:   ])
+224:   const [schoolColloquiums, setSchoolColloquiums] = useState([
+225:     { id: 1, scholar: 'Ajay Dev', guide: 'Dr. J. Paul', date: '2026-07-02', status: 'Pending School Approval' },
+226:     { id: 103, scholar: 'Deepa R', guide: 'Dr. Ravi', date: '2026-06-28', status: 'Pending School Approval' }
+227:   ])
+228:   const [inchSubmissions, setInchSubmissions] = useState([
+229:     { id: 1, scholar: 'Sneha Roy', guide: 'Dr. S. K. Gupta', docType: 'Pre-Synopsis Thesis Draft', status: 'Pending Verification' },
+230:     { id: 104, scholar: 'Naveen M', guide: 'Dr. Kumar', docType: 'Pre-Synopsis Thesis Draft', status: 'Pending Verification' }
+231:   ])
+232:   const [schoolSynopsis, setSchoolSynopsis] = useState([
+233:     { id: 1, scholar: 'Kamalesh N', topic: 'Aerodynamic Modeling', status: 'Pending School Review' },
+234:     { id: 105, scholar: 'Akash V', topic: 'Aerodynamic Modeling', status: 'Pending School Review' }
+235:   ])
+236:   const [guideWorkload, setGuideWorkload] = useState([
+237:     { id: 1, name: 'Dr. D. Srinivasan', designation: 'Professor', maxLimit: 8, currentScholars: 5, department: 'School of Computing', specialization: 'Computer Science & Engineering', email: 'd.srinivasan.set@dsuniversity.ac.in' },
+238:     { id: 2, name: 'Dr. R. Venkataraman', designation: 'Associate Professor', maxLimit: 6, currentScholars: 4, department: 'School of Computing', specialization: 'Computer Science & Engineering', email: 'r.venkataraman.set@dsuniversity.ac.in' },
+239:     { id: 3, name: 'Dr. H. Subramanian', designation: 'Assistant Professor', maxLimit: 4, currentScholars: 3, department: 'School of Engineering', specialization: 'Electronics & Communication Engineering', email: 'h.subramanian.set@dsuniversity.ac.in' },
+240:     { id: 4, name: 'Dr. S. K. Gupta', designation: 'Professor', maxLimit: 8, currentScholars: 8, department: 'School of Engineering', specialization: 'Electronics & Communication Engineering', email: 's.k.gupta.set@dsuniversity.ac.in' }
+241:   ])
+242:   const [scholarApprovalHistories, setScholarApprovalHistories] = useState({
+243:     'Priya R': [
+244:       { phase: 'First DAC', status: 'Approved', date: '10-Nov-2022', documents: ['dac_proposal.pdf', 'dac_members.pdf'] },
+245:       { phase: 'Coursework', status: 'Approved', date: '05-May-2023', documents: ['coursework_marksheet.pdf'] },
+246:       { phase: 'Comprehensive Viva', status: 'Approved', date: '14-Sep-2023', documents: ['viva_report.pdf'] },
+247:       { phase: 'Colloquium', status: 'Approved', date: '20-Feb-2024', documents: ['colloquium_minutes.pdf', 'journal_publications.pdf'] },
+248:       { phase: 'INCH Formatting', status: 'Approved', date: '18-Aug-2024', documents: ['formatting_clearance.pdf', 'plagiarism_report.pdf'] },
+249:       { phase: 'Synopsis', status: 'Approved', date: '12-Jan-2025', documents: ['synopsis_copy.pdf', 'examiner_panel.pdf'] }
+250:     ],
